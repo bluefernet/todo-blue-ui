@@ -25,6 +25,7 @@
     "bulma-calendar": "^6.0.7",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
-    "nuxt-buefy": "^0.3.28"
+    "nuxt-buefy": "^0.3.28",
+    "qs": "^6.9.3"
   }
 }

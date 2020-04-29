@@ -1,6 +1,11 @@
 
 export default {
   mode: 'universal',
+  generate: {
+    routes: [
+      '/tasks/:id'
+    ]
+  },
   /*
   ** Headers of the page
   */

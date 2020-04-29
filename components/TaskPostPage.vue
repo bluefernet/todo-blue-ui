@@ -38,12 +38,12 @@
       <div class="level">
         <div class="level-left">
           <div class="level-item has-text-centered">
-            <button class="button is-primary">
+            <button class="button is-primary" @click="onSave">
               Salva
             </button>
           </div>
           <div class="level-item has-text-centered">
-            <button class="button is-danger">
+            <button class="button is-danger" @click="onCancel">
               Cancella
             </button>
           </div>
@@ -55,8 +55,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+import qs from 'qs'
 import HeaderBlue from '../components/HeaderBlue.vue'
 import FooterBlue from '../components/FooterBlue.vue'
+
 export default {
   components: {
     HeaderBlue,
@@ -69,29 +72,31 @@ export default {
         title: '',
         description: '',
         state: '',
-        date: new Date(),
         dataPick: new Date()
       }
     }
   },
   methods: {
+    onSave () {
+      axios
+        .post(
+          process.env.EXTERNAL_API_URL + '/v1/tasks',
+          qs.stringify(this.task)
+        )
+        .then((res) => {
+          console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
+        })
+        .catch(e => console.log(e))
+    },
+    onCancel () {
+      this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
+    },
     visualizeData () {
       console.log('Titolo 1' + this.titolo)
       console.log('Titolo ' + this.task.title)
       console.log('Descrizione ' + this.task.description)
       console.log('this.state ' + this.task.state)
-
-      alert(
-        this.task.title +
-          ' ' +
-          this.task.description +
-          ' ' +
-          this.task.state +
-          ' ' +
-          this.task.dataPick +
-          ' ' +
-          this.task.date
-      )
+      console.log('this.state ' + this.task.dataPick)
     }
   }
 }
