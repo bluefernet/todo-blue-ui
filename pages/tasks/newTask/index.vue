@@ -10,16 +10,12 @@
       <input v-model="task.description" class="input" maxlength="500" type="textarea">
       <label class="label">Stato</label>
       <div class="select">
-        <select>
-          <option>Select dropdown</option>
-          <option>With options</option>
+        <select v-model="task.state">
+          <option>Done</option>
+          <option>Doing</option>
+          <option>Done</option>
         </select>
       </div>
-      <select v-model="task.state" placeholder="Select a state">
-        <option>Done</option>
-        <option>Doing</option>
-        <option>Done</option>
-      </select>
       <b-field label="Select a date">
         <b-datepicker v-model="task.dataPick" :selected-date="task.dataPick" placeholder="Select a date..." icon="calendar-today" editable />
       </b-field>
@@ -43,13 +39,16 @@
 <script>
 import axios from 'axios'
 import qs from 'qs'
-import HeaderBlue from '../components/HeaderBlue.vue'
-import FooterBlue from '../components/FooterBlue.vue'
+import HeaderBlue from '../../../components/HeaderBlue.vue'
+import FooterBlue from '../../../components/FooterBlue.vue'
 
 export default {
   components: {
     HeaderBlue,
     FooterBlue
+  },
+  asyncData () {
+
   },
   data () {
     return {

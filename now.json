@@ -15,8 +15,5 @@
       }
     ],
     "build": {
-      "env":{
-        "EXTERNAL_API_URL": "https://todo-blue-service.now.sh"
-      }
     }
   }

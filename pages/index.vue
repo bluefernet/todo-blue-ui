@@ -2,53 +2,51 @@
   <div>
     <header-blue />
     <div class="container">
+      <div class="columns">
+        <div class="column is-one-third">
+          <div class="box">
+            <h1 class="title is-2">
+              <strong>Inseriti</strong>
+            </h1>
+            <hr>
+            <task-card />
+            <hr>
+            <task-card />
+            <hr>
+            <task-card />
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="box">
+            <h1 class="title is-2">
+              <strong>Elaborati</strong>
+            </h1>
+            <hr>
+            <task-card />
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="box">
+            <h1 class="title is-2">
+              <strong>Chiusi</strong>
+            </h1>
+            <hr>
+            <task-card />
+            <hr>
+            <task-card />
+          </div>
+        </div>
+      </div>
       <div>
-        <div class="columns is-8">
-          <div class="column is-one-third">
-            <div class="box">
-              <h1 class="title is-2">
-                <strong>Inseriti</strong>
-              </h1>
-              <hr>
-              <task-card />
-              <hr>
-              <task-card />
-              <hr>
-              <task-card />
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="box">
-              <h1 class="title is-2">
-                <strong>Elaborati</strong>
-              </h1>
-              <hr>
-              <task-card />
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="box">
-              <h1 class="title is-2">
-                <strong>Chiusi</strong>
-              </h1>
-              <hr>
-              <task-card />
-              <hr>
-              <task-card />
-            </div>
-          </div>
-        </div>
-        <div>
-          <b-field label="Select a date">
-            <b-datepicker
-              v-model="dataPick"
-              placeholder="Type or select a date..."
-              icon="calendar-today"
-              :selected-date="dataPick"
-              editable
-            />
-          </b-field>
-        </div>
+        <b-field label="Select a date">
+          <b-datepicker
+            v-model="dataPick"
+            placeholder="Type or select a date..."
+            icon="calendar-today"
+            :selected-date="dataPick"
+            editable
+          />
+        </b-field>
         <div>{{ dataPick }}</div>
         <button @click="visualizeData">
           Visualizza
@@ -57,9 +55,14 @@
           <nuxt-link to="/tasks">
             go to tasks
           </nuxt-link>
-          <NuxtLink :to="'/tasks/'+tasks.id">
-            {{ tasks.id }}
-          </NuxtLink>
+        </button>
+        <button class="button">
+          <nuxt-link to="/tasks/newTask">
+            go to new
+          </nuxt-link>
+        </button>
+        <button @click="LinkId">
+          Go to id
         </button>
       </div>
     </div>
@@ -91,6 +94,10 @@ export default {
     visualizeData () {
       console.log('dataPick ' + this.dataPick)
       this.dataPick = new Date(Date.now())
+    },
+    LinkId () {
+      console.log('id ' + this.tasks.id)
+      this.$router.push({ path: '/tasks/' + this.tasks.id })
     }
   }
 }

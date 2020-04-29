@@ -1,8 +1,5 @@
 <template>
-  <div>
-    div id
-    <task-post-page />
-  </div>
+  <task-post-page />
 </template>
 
 <script>
@@ -12,10 +9,8 @@ export default {
   components: {
     TaskPostPage
   }
-
 }
 </script>
 
 <style scoped>
-
 </style>
