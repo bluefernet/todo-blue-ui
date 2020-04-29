@@ -3,16 +3,14 @@ import axios from 'axios'
 export default {
   mode: 'universal',
   generate: {
-
     routes () {
-      return axios.get('https://todo-blue-ui.now.sh/users')
+      return axios.get('https://todo-blue-service.now.sh/v1/tasks')
         .then((res) => {
           return res.data.map((task) => {
             return '/tasks/' + task.id
           })
         })
     }
-
   },
   /*
   ** Headers of the page
