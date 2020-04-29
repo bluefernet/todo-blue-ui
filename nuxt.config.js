@@ -1,10 +1,18 @@
+import axios from 'axios'
 
 export default {
   mode: 'universal',
   generate: {
-    routes: [
-      '/tasks/:id'
-    ]
+
+    routes () {
+      return axios.get('https://todo-blue-ui.now.sh/users')
+        .then((res) => {
+          return res.data.map((task) => {
+            return '/tasks/' + task.id
+          })
+        })
+    }
+
   },
   /*
   ** Headers of the page
