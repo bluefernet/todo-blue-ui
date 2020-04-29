@@ -6,7 +6,7 @@ export default {
     routes () {
       return axios.get('https://todo-blue-service.now.sh/v1/tasks')
         .then((res) => {
-          return res.data.map((task) => {
+          return res.data.tasks.map((task) => {
             return '/tasks/' + task.id
           })
         })
