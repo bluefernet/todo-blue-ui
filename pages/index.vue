@@ -53,6 +53,14 @@
         <button @click="visualizeData">
           Visualizza
         </button>
+        <button class="button">
+          <nuxt-link to="/tasks">
+            go to tasks
+          </nuxt-link>
+          <NuxtLink :to="'/tasks/'+tasks.id">
+            {{ tasks.id }}
+          </NuxtLink>
+        </button>
       </div>
     </div>
     <footer-blue />
@@ -73,7 +81,10 @@ export default {
   data () {
     return {
       dataPick: new Date(),
-      element: ''
+      element: '',
+      tasks: {
+        id: '01E70CK7AR9X6PT17QWV1YMK4V'
+      }
     }
   },
   methods: {
