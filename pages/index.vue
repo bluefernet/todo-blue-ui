@@ -18,15 +18,17 @@
         </div>
         <div class="columns">
           <div class="column">
-            <task-card
+            <!--task-card
               :title="asyncTask.title"
               :description="asyncTask.description"
               :date="asyncTask.date"
+            / -->
+            <task-card-list
+              :tasks="asyncTasks"
             />
           </div>
         </div>
       </div>
-
       <button class="button">
         <nuxt-link to="/tasks">
           go to tasks
@@ -47,11 +49,13 @@
 import axios from 'axios'
 import HeaderBlue from '../components/HeaderBlue.vue'
 import TaskCard from '../components/TaskCard.vue'
+import TaskCardList from '../components/TaskCardList.vue'
 import FooterBlue from '../components/FooterBlue.vue'
 
 export default {
   components: {
     TaskCard,
+    TaskCardList,
     HeaderBlue,
     FooterBlue
   },
@@ -60,8 +64,7 @@ export default {
     return axios
       .get(
         process.env.EXTERNAL_API_URL +
-          '/v1/task/' +
-          '01E73GG7NWARDPYXARFXHN06S7' // Test
+          '/v1/tasks'
       )
       .then((res) => {
         console.log('!!!!!!!!!!!!!!!!!' + res.data.task)
@@ -69,13 +72,25 @@ export default {
         console.log('res.data.task.id ' + res.data.task.id)
 
         return {
-          asyncTask: res.data.task
+          asyncTasks: res.data.tasks
         }
       })
       .catch(e => console.log(e))
   },
   data () {
     return {
+      taskArray: [
+        {
+          title: 'titolo 1',
+          description: 'descrizione 1',
+          date: '2020-01-01'
+        },
+        {
+          title: 'titolo 2',
+          description: 'descrizione 2',
+          date: '2020-02-02'
+        }
+      ],
       loadedTask: {},
       tabIsActive: 'true',
       dataPick: new Date(),
@@ -88,6 +103,7 @@ export default {
   methods: {
     chooseTab (event) {
       console.log(event)
+      console.log(asyncTasks)
       this.tabIsActive = ''
     },
     visualizeData () {
