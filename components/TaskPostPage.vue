@@ -2,7 +2,6 @@
   <div class="section">
     <header-blue />
     <br>
-
     <div class="section">
       <label class="label">Titolo</label>
       <input v-model="editedTask.title" class="input">
@@ -23,7 +22,6 @@
       <b-field label="Select a date">
         <b-datepicker v-model="editedTask.dataPick" :selected-date="editedTask.dataPick" placeholder="Select a date..." icon="calendar-today" editable />
       </b-field>
-
       <button class="button" @click="visualizeData">
         Visualizza
       </button>

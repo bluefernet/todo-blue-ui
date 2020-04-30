@@ -1,16 +1,42 @@
 <template>
   <div class="board-item">
     <div class="board-item-content">
-      <span>Titolo Descrizione Prova </span>
+      <span>{{ title }}</span>
       <br>
-      <span>2020/01/01 - 00:00</span>
+      <span>{{ date }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: 'Default Title Card'
+    },
+    date: {
+      type: String,
+      required: true,
+      default: '00:00 AM - 1 Jan 2020'
+    },
+    description: {
+      type: String,
+      required: false,
+      default: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+    },
+    id: {
+      type: String,
+      required: true,
+      default: ''
+    }
+  },
+  methods: {
+    visualizza () {
+      this.$router.push({ path: '/tasks/' + this.id })
+    }
+  }
 }
 </script>
 
