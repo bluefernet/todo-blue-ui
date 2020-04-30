@@ -1,76 +1,50 @@
 <template>
   <div>
     <header-blue />
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-third">
-          <div class="box">
-            <h1 class="title is-2">
-              <strong>Inseriti</strong>
-            </h1>
-            <hr>
-            <task-card />
-            <hr>
-            <task-card />
-            <hr>
-            <task-card />
-          </div>
-        </div>
-        <div class="column is-one-third">
-          <div class="box">
-            <h1 class="title is-2">
-              <strong>Elaborati</strong>
-            </h1>
-            <hr>
-            <task-card />
-          </div>
-        </div>
-        <div class="column is-one-third">
-          <div class="box">
-            <h1 class="title is-2">
-              <strong>Chiusi</strong>
-            </h1>
-            <hr>
-            <task-card />
-            <hr>
-            <task-card />
-          </div>
-        </div>
-      </div>
+    <div class="section">
       <div>
-        <b-field label="Select a date">
-          <b-datepicker
-            v-model="dataPick"
-            placeholder="Type or select a date..."
-            icon="calendar-today"
-            :selected-date="dataPick"
-            editable
-          />
-        </b-field>
-        <div>{{ dataPick }}</div>
-        <button @click="visualizeData">
-          Visualizza
-        </button>
-        <button class="button">
-          <nuxt-link to="/tasks">
-            go to tasks
-          </nuxt-link>
-        </button>
-        <button class="button">
-          <nuxt-link to="/tasks/newTask">
-            go to new
-          </nuxt-link>
-        </button>
-        <button @click="LinkId">
-          Go to id
-        </button>
+        <div class="tabs" @click="chooseTab">
+          <ul>
+            <li :class="{'is-active': tabIsActive}">
+              <a>Todo</a>
+            </li>
+            <li>
+              <a>Doing</a>
+            </li>
+            <li>
+              <a>Done</a>
+            </li>
+          </ul>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <task-card
+              :title="loadedTask.title"
+              :description="loadedTask.description"
+              :date="loadedTask.date"
+            />
+          </div>
+        </div>
       </div>
+
+      <button class="button">
+        <nuxt-link to="/tasks">
+          go to tasks
+        </nuxt-link>
+      </button>
+      <button class="button">
+        <nuxt-link to="/tasks/newTask">
+          go to new
+        </nuxt-link>
+      </button>
     </div>
+
     <footer-blue />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import HeaderBlue from '../components/HeaderBlue.vue'
 import TaskCard from '../components/TaskCard.vue'
 import FooterBlue from '../components/FooterBlue.vue'
@@ -81,8 +55,25 @@ export default {
     HeaderBlue,
     FooterBlue
   },
+  asyncData () {
+    console.log('asyncData')
+    axios
+      .get(
+        process.env.EXTERNAL_API_URL +
+            '/v1/task/' +
+            '01E73GG7NWARDPYXARFXHN06S7' // Test
+      )
+      .then((res) => {
+        console.log('!!!!!!!!!!!!!!!!!' + res.data.task)
+        this.loadedTask = res.data.task
+        return this.loadedTask
+      })
+      .catch(e => console.log(e))
+  },
   data () {
     return {
+      loadedTask: [],
+      tabIsActive: 'true',
       dataPick: new Date(),
       element: '',
       tasks: {
@@ -91,6 +82,10 @@ export default {
     }
   },
   methods: {
+    chooseTab (event) {
+      console.log(event)
+      this.tabIsActive = ''
+    },
     visualizeData () {
       console.log('dataPick ' + this.dataPick)
       this.dataPick = new Date(Date.now())

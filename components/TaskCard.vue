@@ -3,7 +3,7 @@
     <header class="card-header">
       <div class="card-header-title">
         <p>
-          title card  -  11:09 PM - 1 Jan 2016
+          {{ title }}  -  {{ date }}
         </p>
       </div>
       <a href="#" class="card-header-icon" aria-label="more options">
@@ -14,7 +14,7 @@
     </header>
     <div class="card-content">
       <div class="content">
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
+        {{ description }}
 
         <time datetime="2016-1-1" />
       </div>
@@ -27,7 +27,25 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: 'Default Title Card'
+    },
+    date: {
+      type: String,
+      required: true,
+      default: '00:00 AM - 1 Jan 2020'
+    },
+    description: {
+      type: String,
+      required: false,
+      default: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+    }
+  }
+}
 </script>
 
 <style scoped>
