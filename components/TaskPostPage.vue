@@ -4,27 +4,27 @@
     <br>
     <div class="section">
       <label class="label">Titolo</label>
-      <input v-model="editedTask.title" class="input">
+      <input v-model="task.title" class="input">
       <label class="label">Descrizione</label>
-      <input v-model="editedTask.description" class="input" maxlength="500" type="textarea">
+      <input v-model="task.description" class="input" maxlength="500" type="textarea">
       <label class="label">Stato</label>
       <div class="select">
-        <select>
-          <option>Select dropdown</option>
-          <option>With options</option>
+        <select v-model="task.state" placeholder="Select a state">
+          <option>To do</option>
+          <option>Doing</option>
+          <option>Done</option>
         </select>
       </div>
-      <select v-model="editedTask.state" placeholder="Select a state">
-        <option>Done</option>
-        <option>Doing</option>
-        <option>Done</option>
-      </select>
       <b-field label="Select a date">
-        <b-datepicker v-model="editedTask.dataPick" :selected-date="editedTask.dataPick" placeholder="Select a date..." icon="calendar-today" editable />
+        <b-datepicker
+          v-model="task.date"
+          :selected-date="task.date"
+          :value="task.date"
+          placeholder="Select a date..."
+          icon="calendar-today"
+          editable
+        />
       </b-field>
-      <button class="button" @click="visualizeData">
-        Visualizza
-      </button>
     </div>
     <div class="sectiom">
       <button class="button is-primary" @click="onSave">
@@ -57,18 +57,15 @@ export default {
   },
   data () {
     return {
-      titolo: '',
-      editedtask: this.task ? { ...this.task }
+      editedtask: this.task
+        ? { ...this.task }
         : {
-          title: '',
-          description: '',
-          state: '',
-          dataPick: ''
+          title: 'Titolo di prova',
+          description: 'descrzione di prova',
+          state: 'done',
+          date: '2020/01/01'
         }
     }
-  },
-  mounted () {
-    this.task.dataPick = new Date()
   },
   methods: {
     onSave () {
@@ -84,13 +81,6 @@ export default {
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
-    },
-    visualizeData () {
-      console.log('Titolo 1' + this.titolo)
-      console.log('Titolo ' + this.task.title)
-      console.log('Descrizione ' + this.task.description)
-      console.log('this.state ' + this.task.state)
-      console.log('this.state ' + this.task.dataPick)
     }
   }
 }

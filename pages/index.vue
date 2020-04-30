@@ -2,29 +2,42 @@
   <div>
     <header-blue />
     <div class="section">
-      <div class="columns is-centered is-2">
+      <div class="columns is-centered">
         <div class="column is-one-third">
-          <task-board-list :tasks="asyncTasks" :title-board="todoBoard" :color-class="todoStyleBoard" />
+          <task-board-list
+            :tasks="asyncTasks"
+            :title-board="todoBoard"
+            :color-class="todoStyleBoard"
+          />
         </div>
+
         <div class="column is-one-third">
-          <task-board-list :tasks="asyncTasks" :title-board="doingBoard" :color-class="doingStyleBoard" />
+          <task-board-list
+            :tasks="asyncTasks"
+            :title-board="doingBoard"
+            :color-class="doingStyleBoard"
+          />
         </div>
+
         <div class="column is-one-third">
-          <task-board-list :tasks="asyncTasks" :title-board="doneBoard" :color-class="doneStyleBoard" />
+          <task-board-list
+            :tasks="asyncTasks"
+            :title-board="doneBoard"
+            :color-class="doneStyleBoard"
+          />
         </div>
       </div>
-      <button class="button">
-        <nuxt-link to="/tasks">
-          go to tasks
-        </nuxt-link>
-      </button>
-      <button class="button">
-        <nuxt-link to="/tasks/newTask">
-          go to new
-        </nuxt-link>
-      </button>
     </div>
-
+    <button class="button">
+      <nuxt-link to="/tasks">
+        go to tasks
+      </nuxt-link>
+    </button>
+    <button class="button">
+      <nuxt-link to="/tasks/newTask">
+        go to new
+      </nuxt-link>
+    </button>
     <footer-blue />
   </div>
 </template>
@@ -56,8 +69,8 @@ export default {
   },
   data () {
     return {
-      todoStyleBoard: 'is-info',
-      doingStyleBoard: 'is-black',
+      todoStyleBoard: 'is-link',
+      doingStyleBoard: 'is-warning',
       doneStyleBoard: 'is-success',
       todoBoard: 'TODO',
       doingBoard: 'DOING',

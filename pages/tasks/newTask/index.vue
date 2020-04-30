@@ -5,19 +5,19 @@
 
     <div class="section">
       <label class="label">Titolo</label>
-      <input v-model="task.title" class="input">
+      <b-input v-model="task.title" maxlength="100" />
       <label class="label">Descrizione</label>
-      <input v-model="task.description" class="input" maxlength="500" type="textarea">
+      <b-input v-model="task.description" maxlength="500" type="textarea" />
       <label class="label">Stato</label>
       <div class="select">
         <select v-model="task.state">
-          <option>Done</option>
+          <option>To do</option>
           <option>Doing</option>
           <option>Done</option>
         </select>
       </div>
       <b-field label="Select a date">
-        <b-datepicker v-model="task.dataPick" :selected-date="task.dataPick" placeholder="Select a date..." icon="calendar-today" editable />
+        <b-datepicker v-model="task.date" :selected-date="task.date" placeholder="Select a date..." icon="calendar-today" editable />
       </b-field>
 
       <button class="button" @click="visualizeData">
@@ -57,12 +57,12 @@ export default {
         title: '',
         description: '',
         state: '',
-        dataPick: ''
+        date: new Date()
       }
     }
   },
   mounted () {
-    this.task.dataPick = new Date()
+    this.task.date = new Date()
   },
   methods: {
     onSave () {
@@ -84,7 +84,7 @@ export default {
       console.log('Titolo ' + this.task.title)
       console.log('Descrizione ' + this.task.description)
       console.log('this.state ' + this.task.state)
-      console.log('this.state ' + this.task.dataPick)
+      console.log('this.state ' + this.task.date)
     }
   }
 }

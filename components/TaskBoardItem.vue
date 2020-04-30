@@ -1,6 +1,6 @@
 <template>
-  <div class="board-item">
-    <div class="board-item-content">
+  <div class="board-item" @click="details">
+    <div class="board-item-content has-text-centered">
       <span>{{ title }}</span>
       <br>
       <span>{{ date }}</span>
@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    visualizza () {
+    details () {
       this.$router.push({ path: '/tasks/' + this.id })
     }
   }
