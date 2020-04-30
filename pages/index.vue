@@ -67,9 +67,7 @@ export default {
           '/v1/tasks'
       )
       .then((res) => {
-        console.log('!!!!!!!!!!!!!!!!!' + res.data.task)
-        console.log('res.data.task.title ' + res.data.task.title)
-        console.log('res.data.task.id ' + res.data.task.id)
+        console.log('!!!!!!!!!!!!!!!!!' + res.data.tasks)
 
         return {
           asyncTasks: res.data.tasks
