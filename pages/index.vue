@@ -72,7 +72,7 @@ export default {
   },
   data () {
     return {
-      loadedTask: [],
+      loadedTask: {},
       tabIsActive: 'true',
       dataPick: new Date(),
       element: '',
