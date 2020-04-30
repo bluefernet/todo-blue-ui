@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="section">
     <task-card
       v-for="task in tasks"
+      :id="task.id"
       :key="task.id"
       :title="task.title"
       :description="task.description"

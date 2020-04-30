@@ -16,16 +16,14 @@
             </li>
           </ul>
         </div>
-        <div class="columns">
-          <div class="column">
+        <div class="columns is-centered is-5">
+          <div class="column is-half">
             <!--task-card
               :title="asyncTask.title"
               :description="asyncTask.description"
               :date="asyncTask.date"
-            / -->
-            <task-card-list
-              :tasks="asyncTasks"
-            />
+            /-->
+            <task-card-list :tasks="asyncTasks" />
           </div>
         </div>
       </div>
@@ -41,6 +39,56 @@
       </button>
     </div>
 
+    <section class="container">
+      <div class="level-item">
+        <div id="sectioncontainer" class="columns is-multiline is-centered cards-container">
+          <div class="column is-narrow">
+            <article class="message is-black">
+              <div class="message-header">
+                <p>Season 1</p>
+                <button class="delete" aria-label="delete" />
+              </div>
+              <div class="message-body">
+                <task-board-item />
+                <div class="board-item">
+                  <div class="board-item-content">
+                    <span>Titolo Descrizione</span>
+                    <br>
+                    <span>2020/01/02</span>
+                  </div>
+                </div>
+                <div class="board-item" @click="boardItemShow">
+                  <div class="board-item-content">
+                    <span>Fist Like a bullet</span>
+                  </div>
+                </div>
+                <div class="board-item">
+                  <div class="board-item-content">
+                    <span>White Stork Spreads Wings</span>
+                  </div>
+                </div>
+                <div class="board-item">
+                  <div class="board-item-content">
+                    <span>Two Tigers Subdue Dragons</span>
+                  </div>
+                </div>
+                <div class="board-item">
+                  <div class="board-item-content">
+                    <span>Snake Creeps Down</span>
+                  </div>
+                </div>
+                <div class="board-item">
+                  <div class="board-item-content">
+                    <span>Hand of Five Poisons</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer-blue />
   </div>
 </template>
@@ -48,13 +96,13 @@
 <script>
 import axios from 'axios'
 import HeaderBlue from '../components/HeaderBlue.vue'
-import TaskCard from '../components/TaskCard.vue'
 import TaskCardList from '../components/TaskCardList.vue'
 import FooterBlue from '../components/FooterBlue.vue'
+import TaskBoardItem from '../components/TaskBoardItem.vue'
 
 export default {
   components: {
-    TaskCard,
+    TaskBoardItem,
     TaskCardList,
     HeaderBlue,
     FooterBlue
@@ -62,10 +110,7 @@ export default {
   asyncData () {
     console.log('asyncTask')
     return axios
-      .get(
-        process.env.EXTERNAL_API_URL +
-          '/v1/tasks'
-      )
+      .get(process.env.EXTERNAL_API_URL + '/v1/tasks')
       .then((res) => {
         console.log('!!!!!!!!!!!!!!!!!' + res.data.tasks)
 
@@ -99,9 +144,11 @@ export default {
     }
   },
   methods: {
+    boardItemShow () {
+      alert('On click!')
+    },
     chooseTab (event) {
       console.log(event)
-      console.log(asyncTasks)
       this.tabIsActive = ''
     },
     visualizeData () {
@@ -125,4 +172,5 @@ export default {
   align-items: center;
   text-align: center;
 }
+
 </style>

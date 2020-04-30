@@ -5,9 +5,9 @@
 
     <div class="section">
       <label class="label">Titolo</label>
-      <input v-model="task.title" class="input">
+      <input v-model="editedTask.title" class="input">
       <label class="label">Descrizione</label>
-      <input v-model="task.description" class="input" maxlength="500" type="textarea">
+      <input v-model="editedTask.description" class="input" maxlength="500" type="textarea">
       <label class="label">Stato</label>
       <div class="select">
         <select>
@@ -15,13 +15,13 @@
           <option>With options</option>
         </select>
       </div>
-      <select v-model="task.state" placeholder="Select a state">
+      <select v-model="editedTask.state" placeholder="Select a state">
         <option>Done</option>
         <option>Doing</option>
         <option>Done</option>
       </select>
       <b-field label="Select a date">
-        <b-datepicker v-model="task.dataPick" :selected-date="task.dataPick" placeholder="Select a date..." icon="calendar-today" editable />
+        <b-datepicker v-model="editedTask.dataPick" :selected-date="editedTask.dataPick" placeholder="Select a date..." icon="calendar-today" editable />
       </b-field>
 
       <button class="button" @click="visualizeData">
@@ -51,15 +51,22 @@ export default {
     HeaderBlue,
     FooterBlue
   },
+  props: {
+    task: {
+      type: Object,
+      required: false
+    }
+  },
   data () {
     return {
       titolo: '',
-      task: {
-        title: '',
-        description: '',
-        state: '',
-        dataPick: ''
-      }
+      editedtask: this.task ? { ...this.task }
+        : {
+          title: '',
+          description: '',
+          state: '',
+          dataPick: ''
+        }
     }
   },
   mounted () {

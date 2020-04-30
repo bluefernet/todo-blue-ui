@@ -1,10 +1,8 @@
 <template>
-  <div class="card">
+  <div class="card" @click="visualizza">
     <header class="card-header">
       <div class="card-header-title">
-        <p>
-          {{ title }}  -  {{ date }}
-        </p>
+        <p>{{ title }} - {{ date }}</p>
       </div>
       <a href="#" class="card-header-icon" aria-label="more options">
         <span class="icon">
@@ -15,7 +13,6 @@
     <div class="card-content">
       <div class="content">
         {{ description }}
-
         <time datetime="2016-1-1" />
       </div>
     </div>
@@ -23,6 +20,7 @@
       <a href="#" class="card-footer-item">Edit</a>
       <a href="#" class="card-footer-item">Delete</a>
     </footer>
+    <div />
   </div>
 </template>
 
@@ -43,6 +41,16 @@ export default {
       type: String,
       required: false,
       default: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+    },
+    id: {
+      type: String,
+      required: true,
+      default: ''
+    }
+  },
+  methods: {
+    visualizza () {
+      this.$router.push({ path: '/tasks/' + this.id })
     }
   }
 }
