@@ -19,9 +19,9 @@
         <div class="columns">
           <div class="column">
             <task-card
-              :title="loadedTask.title"
-              :description="loadedTask.description"
-              :date="loadedTask.date"
+              :title="asyncTask.title"
+              :description="asyncTask.description"
+              :date="asyncTask.date"
             />
           </div>
         </div>
@@ -56,8 +56,8 @@ export default {
     FooterBlue
   },
   asyncData () {
-    console.log('asyncData')
-    axios
+    console.log('asyncTask')
+    return axios
       .get(
         process.env.EXTERNAL_API_URL +
           '/v1/task/' +
@@ -69,7 +69,7 @@ export default {
         console.log('res.data.task.id ' + res.data.task.id)
 
         return {
-          loadedTask: res.data.task
+          asyncTask: res.data.task
         }
       })
       .catch(e => console.log(e))
