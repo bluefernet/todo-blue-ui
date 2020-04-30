@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import TaskPostPage from '../../../components/TaskPostPage.vue'
 
 export default {

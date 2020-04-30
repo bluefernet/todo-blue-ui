@@ -1,26 +1,28 @@
 <template>
   <div class="card" @click="visualizza">
-    <header class="card-header">
-      <div class="card-header-title">
-        <p>{{ title }} - {{ date }}</p>
+    <a>
+      <header class="card-header">
+        <div class="card-header-title">
+          <p>{{ title }} - {{ date }}</p>
+        </div>
+        <a href="#" class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true" />
+          </span>
+        </a>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          {{ description }}
+          <time datetime="2016-1-1" />
+        </div>
       </div>
-      <a href="#" class="card-header-icon" aria-label="more options">
-        <span class="icon">
-          <i class="fas fa-angle-down" aria-hidden="true" />
-        </span>
-      </a>
-    </header>
-    <div class="card-content">
-      <div class="content">
-        {{ description }}
-        <time datetime="2016-1-1" />
-      </div>
-    </div>
-    <footer class="card-footer">
-      <a href="#" class="card-footer-item">Edit</a>
-      <a href="#" class="card-footer-item">Delete</a>
-    </footer>
-    <div />
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item">Edit</a>
+        <a href="#" class="card-footer-item">Delete</a>
+      </footer>
+      <div />
+    </a>
   </div>
 </template>
 
