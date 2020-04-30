@@ -60,13 +60,17 @@ export default {
     axios
       .get(
         process.env.EXTERNAL_API_URL +
-            '/v1/task/' +
-            '01E73GG7NWARDPYXARFXHN06S7' // Test
+          '/v1/task/' +
+          '01E73GG7NWARDPYXARFXHN06S7' // Test
       )
       .then((res) => {
         console.log('!!!!!!!!!!!!!!!!!' + res.data.task)
-        this.loadedTask = res.data.task
-        return this.loadedTask
+        console.log('res.data.task.title ' + res.data.task.title)
+        console.log('res.data.task.id ' + res.data.task.id)
+
+        return {
+          loadedTask: res.data.task
+        }
       })
       .catch(e => console.log(e))
   },
