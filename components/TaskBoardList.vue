@@ -3,8 +3,8 @@
     <div id="sectioncontainer" class="columns is-centered cards-container">
       <div class="column">
         <article :class="'message ' + colorClass">
-          <div class="message-header has-text-centered">
-            <span class="has-text-centered">{{ titleBoard }} - {{ colorClass }}</span>
+          <div class="message-header">
+            {{ titleBoard }}
           </div>
           <div class="message-body">
             <task-board-item
@@ -49,3 +49,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>

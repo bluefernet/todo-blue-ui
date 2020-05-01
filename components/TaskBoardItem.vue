@@ -1,9 +1,12 @@
 <template>
-  <div class="board-item" @click="details">
+  <div class="board-item">
     <div class="board-item-content has-text-centered">
-      <span>{{ title }}</span>
-      <br>
-      <span>{{ date }}</span>
+      <div class="has-text-right" />
+      <div @click="details">
+        <span>{{ title }}</span>
+        <br>
+        <span>{{ date }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +35,17 @@ export default {
       default: ''
     }
   },
+  date () {
+    return {
+      isActive: false,
+      deleteNotification: false
+    }
+  },
   methods: {
+    showNotification () {
+      console.log(this.deleteNotification)
+      this.deleteNotification = !this.deleteNotification
+    },
     details () {
       this.$router.push({ path: '/tasks/' + this.id })
     }

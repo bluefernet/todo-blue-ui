@@ -4,15 +4,21 @@
     <br>
     <div class="section">
       <label class="label">Titolo</label>
-      <input v-model="task.title" class="input">
+      <b-input v-model="task.title" maxlength="100" />
       <label class="label">Descrizione</label>
-      <input v-model="task.description" class="input" maxlength="500" type="textarea">
+      <b-input v-model="task.description" maxlength="500" type="textarea" />
       <label class="label">Stato</label>
       <div class="select">
         <select v-model="task.state" placeholder="Select a state">
-          <option>To do</option>
-          <option>Doing</option>
-          <option>Done</option>
+          <option>
+            To do
+          </option>
+          <option>
+            Doing
+          </option>
+          <option>
+            Done
+          </option>
         </select>
       </div>
       <b-field label="Select a date">
@@ -27,12 +33,18 @@
       </b-field>
     </div>
     <div class="sectiom">
-      <button class="button is-primary" @click="onSave">
-        Salva
-      </button>
-      <button class="button is-danger" @click="onCancel">
-        Cancella
-      </button>
+      <div class="level" />
+      <div class="level-left">
+        <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
+        <modal-confirm-button :task="task" @updateConfirmed="onCancel" />
+      </div>
+      <div class="level-right">
+        <nuxt-link to="/">
+          <button class="button is-link">
+            Home
+          </button>
+        </nuxt-link>
+      </div>
     </div>
     <footer-blue />
   </div>
@@ -43,9 +55,13 @@ import axios from 'axios'
 import qs from 'qs'
 import HeaderBlue from '../components/HeaderBlue.vue'
 import FooterBlue from '../components/FooterBlue.vue'
+import ModalConfirmButton from '../components/ModalConfirmButton.vue'
+import ModalDeleteButton from '../components/ModalDeleteButton.vue'
 
 export default {
   components: {
+    ModalConfirmButton,
+    ModalDeleteButton,
     HeaderBlue,
     FooterBlue
   },
@@ -60,15 +76,17 @@ export default {
       editedtask: this.task
         ? { ...this.task }
         : {
-          title: 'Titolo di prova',
-          description: 'descrzione di prova',
-          state: 'done',
-          date: '2020/01/01'
+          title: 'Titolo di editedTask',
+          description: 'descrzione di editedTask',
+          state: 'To do',
+          date: '2020/12/31'
         }
     }
   },
   methods: {
     onSave () {
+      console.log('date taskPostPage pre ' + this.task.date)
+      console.log('date taskPostPage Post ' + new Date(this.task.date))
       axios
         .post(
           process.env.EXTERNAL_API_URL + '/v1/tasks',

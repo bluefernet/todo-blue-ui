@@ -17,9 +17,10 @@ export default {
       .then((res) => {
         console.log('res.data.task ' + res.data.task)
         console.log('res.data.task ' + res.data.task.title)
-        console.log('res.data.task ' + res.data.task.date)
+        console.log('res.data.task pre ' + res.data.task.date)
         console.log('res.data.task ' + res.data.task.description)
         res.data.task.date = new Date(res.data.task.date)
+        console.log('res.data.task post ' + res.data.task.date)
         return {
           editedTask: res.data.task
         }

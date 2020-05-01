@@ -27,17 +27,15 @@
           />
         </div>
       </div>
+
+      <div class="section">
+        <nuxt-link to="/tasks/newTask">
+          <button class="button is-info">
+            Nuovo Task
+          </button>
+        </nuxt-link>
+      </div>
     </div>
-    <button class="button">
-      <nuxt-link to="/tasks">
-        go to tasks
-      </nuxt-link>
-    </button>
-    <button class="button">
-      <nuxt-link to="/tasks/newTask">
-        go to new
-      </nuxt-link>
-    </button>
     <footer-blue />
   </div>
 </template>

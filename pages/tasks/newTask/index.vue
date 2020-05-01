@@ -11,9 +11,15 @@
       <label class="label">Stato</label>
       <div class="select">
         <select v-model="task.state">
-          <option>To do</option>
-          <option>Doing</option>
-          <option>Done</option>
+          <option value="TODO">
+            To do
+          </option>
+          <option value="DOING">
+            Doing
+          </option>
+          <option value="DONE">
+            Done
+          </option>
         </select>
       </div>
       <b-field label="Select a date">
