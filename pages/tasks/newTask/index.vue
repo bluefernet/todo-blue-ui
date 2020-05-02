@@ -91,7 +91,7 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
-      this.$router.push('/') //TODO - da inserire gestione STORE      
+      this.$router.push('/') // TODO - da inserire gestione STORE
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
