@@ -45,7 +45,9 @@ export function updateTask (_id, _task) {
 
 export function tasksListByState (_id) {
   getRequest(getTasksByStateURI + _id)
-    .then((res) => { return res.data.tasks })
+    .then((res) => { 
+        console.log(res)
+        return res.tasks })
     .catch(e => console.log(e))
 }
 
