@@ -1,13 +1,30 @@
 <template>
-  <task-post-page :task="editedTask" @TaskPostPageUpdate="pageUpdated" />
+  <div>
+    <task-post-page :task="editedTask" @TaskPostPageUpdate="pageUpdated" />
+
+    <div>
+      <b-modal
+        :active.sync="isConfirmModalActive"
+        has-modal-card
+        trap-focus
+        :destroy-on-hide="false"
+        aria-role="dialog"
+        aria-modal
+      >
+        <modal-blue-confirm />
+      </b-modal>
+    </div>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
 import TaskPostPage from '../../../components/TaskPostPage.vue'
+import ModalBlueConfirm from '../../../components/ModalBlueConfirm.vue'
 
 export default {
   components: {
+    ModalBlueConfirm,
     TaskPostPage
   },
   asyncData (context) {
@@ -42,10 +59,14 @@ export default {
       .catch(e => console.log(e))
   },
   data () {
+    return {
+      isConfirmModalActive: false
+    }
   },
   methods: {
     pageUpdated () {
-      this.$router.push('/')
+      this.isConfirmModalActive = true
+      // this.$router.push('/')
     }
   }
 }
