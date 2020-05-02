@@ -43,8 +43,8 @@ export function updateTask (_id, _task) {
     .catch(e => console.log(e))
 }
 
-export function tasksListByState (_id) {
-  return getRequest(getTasksByStateURI + _id).tasks
+export async function tasksListByState (_id) {
+  return await getRequest(getTasksByStateURI + _id).tasks
 }
 
 export function getRequest (_route) {
