@@ -3,7 +3,7 @@
     <div class="modal-card" style="width: auto">
       <header class="modal-card-head">
         <p class="modal-card-title">
-          Successo!
+          Operazione completata
         </p>
       </header>
       <section class="modal-card-body">

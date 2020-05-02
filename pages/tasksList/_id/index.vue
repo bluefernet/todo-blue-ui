@@ -17,9 +17,9 @@
 
 <script>
 import axios from 'axios'
-import TaskCardList from '../../../components/TaskCardList.vue'
-import HeaderBlue from '../../../components/HeaderBlue.vue'
-import FooterBlue from '../../../components/FooterBlue.vue'
+import TaskCardList from '../../../components/card/TaskCardList.vue'
+import HeaderBlue from '../../../components/shared/HeaderBlue.vue'
+import FooterBlue from '../../../components/shared/FooterBlue.vue'
 export default {
   components: {
     TaskCardList,
@@ -27,7 +27,6 @@ export default {
     FooterBlue
   },
   asyncData (context) {
-    console.log(' tasksList ' + context.route.params.id)
     return axios
       .get(
         process.env.EXTERNAL_API_URL +

@@ -55,8 +55,8 @@
 <script>
 import axios from 'axios'
 import qs from 'qs'
-import HeaderBlue from '../../../components/HeaderBlue.vue'
-import FooterBlue from '../../../components/FooterBlue.vue'
+import HeaderBlue from '../../../components/shared/HeaderBlue.vue'
+import FooterBlue from '../../../components/shared/FooterBlue.vue'
 
 export default {
   components: {

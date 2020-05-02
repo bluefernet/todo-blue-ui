@@ -11,7 +11,7 @@
         aria-role="dialog"
         aria-modal
       >
-        <modal-blue-confirm />
+        <modal-confirm-form />
       </b-modal>
     </div>
   </div>
@@ -20,25 +20,18 @@
 <script>
 import axios from 'axios'
 import TaskPostPage from '../../../components/TaskPostPage.vue'
-import ModalBlueConfirm from '../../../components/ModalBlueConfirm.vue'
+import ModalConfirmForm from '../../../components/modal/ModalConfirmForm.vue'
 
 export default {
   components: {
-    ModalBlueConfirm,
+    ModalConfirmForm,
     TaskPostPage
   },
   asyncData (context) {
-    console.log('context.route.params.id ' + context.route.params.id)
     return axios
       .get(process.env.EXTERNAL_API_URL + '/v1/task/' + context.route.params.id)
       .then((res) => {
-        console.log('res.data.task ' + res.data.task)
-        console.log('res.data.task ' + res.data.task.title)
-        console.log('res.data.task pre ' + res.data.task.date)
-        console.log('res.data.task ' + res.data.task.description)
         res.data.task.date = new Date(res.data.task.date)
-        console.log('res.data.task post ' + res.data.task.date)
-        console.log('res.data.task state ' + res.data.task.state)
         switch (res.data.task.state) {
           case 'DONE':
             res.data.task.state = 'Done'

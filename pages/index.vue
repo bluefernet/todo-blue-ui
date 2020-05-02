@@ -45,9 +45,9 @@
 
 <script>
 import axios from 'axios'
-import HeaderBlue from '../components/HeaderBlue.vue'
-import FooterBlue from '../components/FooterBlue.vue'
-import TaskBoardList from '../components/TaskBoardList.vue'
+import HeaderBlue from '../components/shared/HeaderBlue.vue'
+import FooterBlue from '../components/shared/FooterBlue.vue'
+import TaskBoardList from '../components/board/TaskBoardList.vue'
 
 export default {
   watchQuery: true,
@@ -57,12 +57,9 @@ export default {
     FooterBlue
   },
   asyncData () {
-    console.log('asyncTask')
     return axios
       .get(process.env.EXTERNAL_API_URL + '/v1/tasks')
       .then((res) => {
-        console.log('!!!!!!!!!!!!!!!!!' + res.data.tasks)
-        console.log(res.data.totalSize)
         const asyncTasksTodo = []
         const asyncTasksDoing = []
         const asyncTasksDone = []

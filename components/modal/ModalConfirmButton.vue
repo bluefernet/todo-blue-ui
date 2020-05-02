@@ -1,10 +1,7 @@
 <template>
   <div>
-    <button
-      class="button is-danger"
-      @click="isComponentModalActive = true"
-    >
-      Cancella
+    <button class="button is-success" @click="isComponentModalActive = true">
+      Conferma
     </button>
 
     <b-modal
@@ -15,7 +12,7 @@
       aria-role="dialog"
       aria-modal
     >
-      <modal-blue-form v-bind="formProps" @modalForm="modalButton" />
+      <modal-form v-bind="formProps" @modalForm="updateTask" />
     </b-modal>
   </div>
 </template>
@@ -23,10 +20,10 @@
 <script>
 import axios from 'axios'
 import qs from 'qs'
-import ModalBlueForm from '../components/ModalBlueForm'
+import ModalForm from '../components/modal/ModalForm'
 export default {
   components: {
-    ModalBlueForm
+    ModalForm
   },
   props: {
     task: {
@@ -46,16 +43,26 @@ export default {
     return {
       isComponentModalActive: false,
       formProps: {
-        title: 'Elimina',
-        message: 'Sei sicuro di voler eliminare il task?'
+        title: 'Conferma',
+        message: 'Sei sicuro di voler aggiornare il Task?'
       }
     }
   },
   methods: {
-    modalButton () {
-      console.log('Da inserire Toast!!!!')
-      console.log(this.task)
-      this.task.deleted = true
+    updateTask () {
+      switch (this.task.state) {
+        case 'Done':
+          this.task.state = 'DONE'
+          break
+        case 'To do':
+          this.task.state = 'TODO'
+          break
+        case 'Doing':
+          this.task.state = 'DOING'
+          break
+        default:
+          break
+      }
 
       axios
         .put(
@@ -66,7 +73,7 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
-      this.$emit('deleteConfirmed')// TODO - DA GESTIRE CON LO STORE
+      this.$emit('updateConfirmed') // TODO - DA GESTIRE CON LO STORE
     }
   }
 }

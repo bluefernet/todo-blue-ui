@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     showNotification () {
-      console.log(this.deleteNotification)
       this.deleteNotification = !this.deleteNotification
     },
     details () {

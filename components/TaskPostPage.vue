@@ -48,10 +48,10 @@
 <script>
 import axios from 'axios'
 import qs from 'qs'
-import HeaderBlue from '../components/HeaderBlue.vue'
-import FooterBlue from '../components/FooterBlue.vue'
-import ModalConfirmButton from '../components/ModalConfirmButton.vue'
-import ModalDeleteButton from '../components/ModalDeleteButton.vue'
+import HeaderBlue from '../components/shared/HeaderBlue.vue'
+import FooterBlue from '../components/shared/FooterBlue.vue'
+import ModalConfirmButton from '../components/modal/ModalConfirmButton.vue'
+import ModalDeleteButton from '../components/modal/ModalDeleteButton.vue'
 
 export default {
   components: {
@@ -80,8 +80,6 @@ export default {
   },
   methods: {
     onSave () {
-      console.log('date taskPostPage pre ' + this.task.date)
-      console.log('date taskPostPage Post ' + new Date(this.task.date))
       axios
         .post(
           process.env.EXTERNAL_API_URL + '/v1/tasks',
