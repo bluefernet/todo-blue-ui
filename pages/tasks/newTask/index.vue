@@ -81,7 +81,7 @@ export default {
     this.task.date = new Date()
   },
   methods: {
-    onSave (redirect) {
+    onSave () {
       axios
         .post(
           process.env.EXTERNAL_API_URL + '/v1/tasks',
@@ -91,11 +91,10 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
-      redirect('/')
+      this.$router.push('/') //TODO - da inserire gestione STORE      
     },
-    onCancel (redirect) {
-      redirect('/')
-      // this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
+    onCancel () {
+      this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
     }
 
   }

@@ -92,9 +92,8 @@ export default {
         })
         .catch(e => console.log(e))
     },
-    onCancel (redirect) {
-      redirect('/')
-      // this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
+    onCancel () {
+      this.$router.push('/') // TODO - DA GESTIRE CON LO STORE
     }
   }
 }

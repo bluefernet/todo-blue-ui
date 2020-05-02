@@ -66,7 +66,7 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
-      this.$emit('deleteConfirmed')
+      this.$emit('deleteConfirmed')//TODO - DA GESTIRE CON LO STORE
     }
   }
 }
