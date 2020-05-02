@@ -44,7 +44,8 @@ export function updateTask (_id, _task) {
 }
 
 export async function tasksListByState (_id) {
-  return await getRequest(getTasksByStateURI + _id).tasks
+  const data = await getRequest(getTasksByStateURI + _id)
+  return data.tasks
 }
 
 export async function getRequest (_route) {

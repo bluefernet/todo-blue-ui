@@ -28,13 +28,15 @@ export default {
     HeaderBlue,
     FooterBlue
   },
-  async asyncData (context) {
-    const list = await tasksListByState(context.route.params.id)
-
-    return {
-      tasksList: list,
-      statePage: JSONtoOptionState(context.route.params.id)
-    }
+  asyncData (context) {
+    tasksListByState(context.route.params.id).then((res) => {
+      console.log(res) // TODO - VERIFICARE QUESTA PAGINA
+      return {
+        tasksList: res.tasks,
+        statePage: JSONtoOptionState(context.route.params.id)
+      }
+    })
+      .catch(e => console.log(e))
 
     /*
     return axios
