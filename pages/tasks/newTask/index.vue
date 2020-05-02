@@ -23,7 +23,13 @@
         </select>
       </div>
       <b-field label="Data scadenza">
-        <b-datepicker v-model="task.date" :selected-date="task.date" placeholder="Select a date..." icon="calendar-today" editable />
+        <b-datepicker
+          v-model="task.date"
+          :selected-date="task.date"
+          placeholder="Select a date..."
+          icon="calendar-today"
+          editable
+        />
       </b-field>
     </div>
     <div class="section">
@@ -79,9 +85,7 @@ export default {
     HeaderBlue,
     FooterBlue
   },
-  asyncData () {
-
-  },
+  asyncData () {},
   data () {
     return {
       todoOption: 'Inserito',
@@ -102,24 +106,12 @@ export default {
   },
   methods: {
     onSave () {
-      /*
-      axios
-        .post(
-          process.env.EXTERNAL_API_URL + '/v1/tasks',
-          qs.stringify(this.task)
-        )
-        .then((res) => {
-          console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
-        })
-        .catch(e => console.log(e))
-*/
       createTask(this.task)
       this.isConfirmModalActive = true
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
     }
-
   }
 }
 </script>

@@ -18,10 +18,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
 import ModalForm from '../modal/ModalForm.vue'
 import { optionToJSONState } from '../../shared'
+import { updateTask } from '../../api'
 
 export default {
   components: {
@@ -54,6 +53,8 @@ export default {
     deleteTask () {
       this.task.deleted = true
       this.task.state = optionToJSONState(this.task.state)
+      updateTask(this.task.id, this.task)
+      /*
       axios
         .put(
           process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,
@@ -63,6 +64,8 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
+*/
+
       this.$emit('deleteConfirmed') // TODO - DA GESTIRE CON LO STORE
     }
   }

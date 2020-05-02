@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="button is-success" @click="isComponentModalActive = true">
-      Conferma
+      Aggiorna
     </button>
 
     <b-modal
@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
 import ModalForm from '../modal/ModalForm'
 import { optionToJSONState } from '../../shared'
+import { updateTask } from '../../api'
+
 export default {
   components: {
     ModalForm
@@ -52,7 +52,9 @@ export default {
   methods: {
     updateTask () {
       this.task.state = optionToJSONState(this.task.state)
-      axios
+      updateTask(this.task.id, this.task)
+      /*
+  axios
         .put(
           process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,
           qs.stringify(this.task)
@@ -61,6 +63,8 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
+*/
+
       this.$emit('updateConfirmed') // TODO - DA GESTIRE CON LO STORE
     }
   }

@@ -30,7 +30,7 @@
       <div class="level">
         <div class="level-left">
           <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
-          <modal-confirm-button :task="task" @updateConfirmed="onCancel" />
+          <modal-update-button :task="task" @updateConfirmed="onCancel" />
         </div>
         <div class="level-right">
           <nuxt-link to="/">
@@ -48,12 +48,12 @@
 <script>
 import HeaderBlue from '../components/shared/HeaderBlue.vue'
 import FooterBlue from '../components/shared/FooterBlue.vue'
-import ModalConfirmButton from '../components/modal/ModalConfirmButton.vue'
+import ModalUpdateButton from '../components/modal/ModalUpdateButton.vue'
 import ModalDeleteButton from '../components/modal/ModalDeleteButton.vue'
 
 export default {
   components: {
-    ModalConfirmButton,
+    ModalUpdateButton,
     ModalDeleteButton,
     HeaderBlue,
     FooterBlue
