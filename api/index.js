@@ -44,11 +44,13 @@ export function updateTask (_id, _task) {
 }
 
 export function tasksListByState (_id) {
-  getRequest(getTasksByStateURI + _id)
-    .then((res) => { 
-        console.log(res)
-        return res.tasks })
+  const tasks = getRequest(getTasksByStateURI + _id)
+    .then((res) => {
+      console.log(res)
+      return res.tasks
+    })
     .catch(e => console.log(e))
+  return tasks
 }
 
 export function getRequest (_route) {
