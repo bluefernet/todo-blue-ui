@@ -25,18 +25,28 @@
       <b-field label="Select a date">
         <b-datepicker v-model="task.date" :selected-date="task.date" placeholder="Select a date..." icon="calendar-today" editable />
       </b-field>
-
-      <button class="button" @click="visualizeData">
-        Visualizza
-      </button>
     </div>
-    <div class="sectiom">
-      <button class="button is-primary" @click="onSave">
-        Salva
-      </button>
-      <button class="button is-danger" @click="onCancel">
-        Cancella
-      </button>
+    <div class="section">
+      <div class="level">
+        <div class="level-left">
+          <div class="buttons">
+            <button class="button is-danger" @click="onCancel">
+              Annulla
+            </button>
+            <button class="button is-success" @click="onSave">
+              Salva
+            </button>
+          </div>
+        </div>
+
+        <div class="level-right">
+          <nuxt-link to="/">
+            <button class="button is-link">
+              Home
+            </button>
+          </nuxt-link>
+        </div>
+      </div>
     </div>
     <footer-blue />
   </div>
@@ -81,17 +91,12 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
+      this.$router.push('/')
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
-    },
-    visualizeData () {
-      console.log('Titolo 1' + this.titolo)
-      console.log('Titolo ' + this.task.title)
-      console.log('Descrizione ' + this.task.description)
-      console.log('this.state ' + this.task.state)
-      console.log('this.state ' + this.task.date)
     }
+
   }
 }
 </script>

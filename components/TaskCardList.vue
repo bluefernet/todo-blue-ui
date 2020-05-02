@@ -8,6 +8,13 @@
       :description="task.description"
       :date="task.date"
     />
+    <div>
+      <nuxt-link to="/">
+        <button class="button is-link">
+          Home
+        </button>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 

@@ -10,15 +10,9 @@
       <label class="label">Stato</label>
       <div class="select">
         <select v-model="task.state" placeholder="Select a state">
-          <option>
-            To do
-          </option>
-          <option>
-            Doing
-          </option>
-          <option>
-            Done
-          </option>
+          <option>To do</option>
+          <option>Doing</option>
+          <option>Done</option>
         </select>
       </div>
       <b-field label="Select a date">
@@ -32,18 +26,19 @@
         />
       </b-field>
     </div>
-    <div class="sectiom">
-      <div class="level" />
-      <div class="level-left">
-        <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
-        <modal-confirm-button :task="task" @updateConfirmed="onCancel" />
-      </div>
-      <div class="level-right">
-        <nuxt-link to="/">
-          <button class="button is-link">
-            Home
-          </button>
-        </nuxt-link>
+    <div class="section">
+      <div class="level">
+        <div class="level-left">
+          <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
+          <modal-confirm-button :task="task" @updateConfirmed="onCancel" />
+        </div>
+        <div class="level-right">
+          <nuxt-link to="/">
+            <button class="button is-link">
+              Home
+            </button>
+          </nuxt-link>
+        </div>
       </div>
     </div>
     <footer-blue />

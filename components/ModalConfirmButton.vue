@@ -52,6 +52,19 @@ export default {
     updateTask () {
       console.log('Da inserire Toast!!!!')
       console.log(this.task)
+      switch (this.task) {
+        case 'Done':
+          this.task.state = 'DONE'
+          break
+        case 'To do':
+          this.task = 'TODO'
+          break
+        case 'Doing':
+          this.task = 'DOING'
+          break
+        default:
+          break
+      }
 
       axios
         .put(

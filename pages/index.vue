@@ -8,6 +8,7 @@
             :tasks="asyncTasks"
             :title-board="todoBoard"
             :color-class="todoStyleBoard"
+            :visualizza-tutti="allTask"
           />
         </div>
 
@@ -16,6 +17,7 @@
             :tasks="asyncTasks"
             :title-board="doingBoard"
             :color-class="doingStyleBoard"
+            :visualizza-tutti="allTask"
           />
         </div>
 
@@ -24,6 +26,7 @@
             :tasks="asyncTasks"
             :title-board="doneBoard"
             :color-class="doneStyleBoard"
+            :visualizza-tutti="allTask"
           />
         </div>
       </div>
@@ -58,9 +61,11 @@ export default {
       .get(process.env.EXTERNAL_API_URL + '/v1/tasks')
       .then((res) => {
         console.log('!!!!!!!!!!!!!!!!!' + res.data.tasks)
+        console.log(res.data.totalSize)
 
         return {
-          asyncTasks: res.data.tasks
+          asyncTasks: res.data.tasks,
+          allTask: res.data.totalSize > 5
         }
       })
       .catch(e => console.log(e))
@@ -95,21 +100,6 @@ export default {
     }
   },
   methods: {
-    boardItemShow () {
-      alert('On click!')
-    },
-    chooseTab (event) {
-      console.log(event)
-      this.tabIsActive = ''
-    },
-    visualizeData () {
-      console.log('dataPick ' + this.dataPick)
-      this.dataPick = new Date(Date.now())
-    },
-    LinkId () {
-      console.log('id ' + this.tasks.id)
-      this.$router.push({ path: '/tasks/' + this.tasks.id })
-    }
   }
 }
 </script>

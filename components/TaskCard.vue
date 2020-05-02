@@ -1,7 +1,7 @@
 <template>
-  <div class="card" @click="visualizza">
-    <a>
-      <header class="card-header">
+  <div>
+    <div class="card" @click="visualizza">
+      <a>      <header class="card-header">
         <div class="card-header-title">
           <p>{{ title }} - {{ date }}</p>
         </div>
@@ -10,19 +10,18 @@
             <i class="fas fa-angle-down" aria-hidden="true" />
           </span>
         </a>
-      </header>
+      </header></a>
+
       <div class="card-content">
         <div class="content">
           {{ description }}
           <time datetime="2016-1-1" />
         </div>
       </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
+      <footer class="card-footer" />
       <div />
-    </a>
+    </div>
+    <div class="section" />
   </div>
 </template>
 
