@@ -52,15 +52,15 @@ export default {
     updateTask () {
       console.log('Da inserire Toast!!!!')
       console.log(this.task)
-      switch (this.task) {
+      switch (this.task.state) {
         case 'Done':
           this.task.state = 'DONE'
           break
         case 'To do':
-          this.task = 'TODO'
+          this.task.state = 'TODO'
           break
         case 'Doing':
-          this.task = 'DOING'
+          this.task.state = 'DOING'
           break
         default:
           break
