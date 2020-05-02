@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import TaskCardList from '../../../components/TaskCardList.vue'
 import HeaderBlue from '../../../components/HeaderBlue.vue'
 import FooterBlue from '../../../components/FooterBlue.vue'
@@ -25,25 +26,19 @@ export default {
     FooterBlue
   },
   asyncData (context) {
-    const tasks = [
-      {
-        title: 'titolo 1',
-        description: 'descrizione 1',
-        date: '2020-01-01',
-        id: 'TASK1ID'
-      },
-      {
-        title: 'titolo 2',
-        description: 'descrizione 2',
-        date: '2020-02-02',
-        id: 'TASK2ID'
-      }
-    ]
     console.log(' tasksList ' + context.route.params.id)
-    return {
-      tasksList: tasks,
-      statePage: context.route.params.id
-    }
+    axios
+      .get(
+        process.env.EXTERNAL_API_URL + '/v1/tasksStatus/' + context.route.params.id
+      )
+      .then((res) => {
+        console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
+        return {
+          tasksList: res.data.tasks,
+          statePage: context.route.params.id
+        }
+      })
+      .catch(e => console.log(e))
   },
   data () {
     return {

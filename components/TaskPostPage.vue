@@ -92,8 +92,9 @@ export default {
         })
         .catch(e => console.log(e))
     },
-    onCancel () {
-      this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
+    onCancel (redirect) {
+      redirect('/')
+      // this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
     }
   }
 }
