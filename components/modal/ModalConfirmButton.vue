@@ -20,7 +20,7 @@
 <script>
 import axios from 'axios'
 import qs from 'qs'
-import ModalForm from '../components/modal/ModalForm'
+import ModalForm from '../components/modal/ModalForm.vue'
 export default {
   components: {
     ModalForm

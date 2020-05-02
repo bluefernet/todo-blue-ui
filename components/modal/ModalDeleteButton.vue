@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button class="button is-danger" @click="isComponentModalActive = true">Cancella</button>
+    <button class="button is-danger" @click="isComponentModalActive = true">
+      Cancella
+    </button>
 
     <b-modal
       :active.sync="isComponentModalActive"
@@ -16,9 +18,9 @@
 </template>
 
 <script>
-import axios from "axios";
-import qs from "qs";
-import ModalForm from "../components/modal/ModalForm";
+import axios from 'axios'
+import qs from 'qs'
+import ModalForm from '../components/modal/ModalForm.vue'
 export default {
   components: {
     ModalForm
@@ -27,40 +29,40 @@ export default {
     task: {
       type: Object,
       required: false,
-      default() {
+      default () {
         return {
-          title: "Titolo di prova",
-          description: "descrzione di prova",
-          state: "done",
-          date: "2020/01/01"
-        };
+          title: 'Titolo di prova',
+          description: 'descrzione di prova',
+          state: 'done',
+          date: '2020/01/01'
+        }
       }
     }
   },
-  data() {
+  data () {
     return {
       isComponentModalActive: false,
       formProps: {
-        title: "Elimina",
-        message: "Sei sicuro di voler eliminare il task?"
+        title: 'Elimina',
+        message: 'Sei sicuro di voler eliminare il task?'
       }
-    };
+    }
   },
   methods: {
-    modalButton() {
-      this.task.deleted = true;
+    modalButton () {
+      this.task.deleted = true
 
       axios
         .put(
-          process.env.EXTERNAL_API_URL + "/v1/task/" + this.task.id,
+          process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,
           qs.stringify(this.task)
         )
-        .then(res => {
-          console.log(res.data); // TODO - VERIFICARE QUESTA PAGINA
+        .then((res) => {
+          console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
-        .catch(e => console.log(e));
-      this.$emit("deleteConfirmed"); // TODO - DA GESTIRE CON LO STORE
+        .catch(e => console.log(e))
+      this.$emit('deleteConfirmed') // TODO - DA GESTIRE CON LO STORE
     }
   }
-};
+}
 </script>
