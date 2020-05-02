@@ -13,7 +13,7 @@
       </section>
       <footer class="modal-card-foot">
         <nuxt-link to="/">
-          <button class="button is-danger" type="button" @click="$parent.close()">
+          <button class="button is-info" type="button" @click="$parent.close()">
             Home
           </button>
         </nuxt-link>

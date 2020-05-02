@@ -5,7 +5,7 @@
       <div class="columns is-centered">
         <div class="column is-one-third">
           <task-board-list
-            :tasks="asyncTasks"
+            :tasks="asyncTodoTasks"
             :title-board="todoBoard"
             :color-class="todoStyleBoard"
             :visualizza-tutti="allTask"
@@ -14,7 +14,7 @@
 
         <div class="column is-one-third">
           <task-board-list
-            :tasks="asyncTasks"
+            :tasks="asyncDoingTasks"
             :title-board="doingBoard"
             :color-class="doingStyleBoard"
             :visualizza-tutti="allTask"
@@ -23,7 +23,7 @@
 
         <div class="column is-one-third">
           <task-board-list
-            :tasks="asyncTasks"
+            :tasks="asyncDoneTasks"
             :title-board="doneBoard"
             :color-class="doneStyleBoard"
             :visualizza-tutti="allTask"
@@ -63,9 +63,29 @@ export default {
       .then((res) => {
         console.log('!!!!!!!!!!!!!!!!!' + res.data.tasks)
         console.log(res.data.totalSize)
-
+        const asyncTasksTodo = []
+        const asyncTasksDoing = []
+        const asyncTasksDone = []
+        res.data.tasks.forEach((task) => {
+          switch (task.state) {
+            case 'TODO':
+              asyncTasksTodo.push(task)
+              break
+            case 'DOING':
+              asyncTasksDoing.push(task)
+              break
+            case 'DONE':
+              asyncTasksDone.push(task)
+              break
+            default:
+              break
+          }
+        })
         return {
-          asyncTasks: res.data.tasks,
+          asyncTodoTasks: asyncTasksTodo,
+          asyncDoingTasks: asyncTasksDoing,
+          asyncDoneTasks: asyncTasksDone,
+          // asyncTasks: res.data.tasks,
           allTask: res.data.totalSize > 5
         }
       })

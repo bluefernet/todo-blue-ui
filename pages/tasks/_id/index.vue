@@ -66,7 +66,6 @@ export default {
   methods: {
     pageUpdated () {
       this.isConfirmModalActive = true
-      // this.$router.push('/')
     }
   }
 }
