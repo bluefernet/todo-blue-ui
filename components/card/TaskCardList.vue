@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import TaskCard from '../components/card/TaskCard.vue'
+import TaskCard from '../card/TaskCard.vue'
 export default {
   components: {
     TaskCard

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import TaskBoardItem from '../components/board/TaskBoardItem.vue'
+import TaskBoardItem from '../board/TaskBoardItem'
 export default {
   components: {
     TaskBoardItem
