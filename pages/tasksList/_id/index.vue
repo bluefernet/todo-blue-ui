@@ -16,40 +16,40 @@
 </template>
 
 <script>
-import axios from "axios";
-import TaskCardList from "../../../components/TaskCardList.vue";
-import HeaderBlue from "../../../components/HeaderBlue.vue";
-import FooterBlue from "../../../components/FooterBlue.vue";
+import axios from 'axios'
+import TaskCardList from '../../../components/TaskCardList.vue'
+import HeaderBlue from '../../../components/HeaderBlue.vue'
+import FooterBlue from '../../../components/FooterBlue.vue'
 export default {
   components: {
     TaskCardList,
     HeaderBlue,
     FooterBlue
   },
-  asyncData(context) {
-    console.log(" tasksList " + context.route.params.id);
+  asyncData (context) {
+    console.log(' tasksList ' + context.route.params.id)
     return axios
       .get(
         process.env.EXTERNAL_API_URL +
-          "/v1/tasksState/" +
+          '/v1/tasksState/' +
           context.route.params.id
       )
-      .then(res => {
-        console.log(res.data); // TODO - VERIFICARE QUESTA PAGINA
+      .then((res) => {
+        console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         return {
           tasksList: res.data.tasks,
           statePage: context.route.params.id
-        };
+        }
       })
-      .catch(e => console.log(e));
+      .catch(e => console.log(e))
   },
-  data() {
+  data () {
     return {
       tasks: []
-    };
+    }
   },
   methods: {}
-};
+}
 </script>
 
 <style scoped>

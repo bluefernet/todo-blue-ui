@@ -39,6 +39,12 @@
         </nuxt-link>
       </div>
     </div>
+    <p @load="counter">
+      {{ counter }}
+    </p>
+    <button @click="increment">
+      Incrementa
+    </button>
     <footer-blue />
   </div>
 </template>
@@ -57,6 +63,7 @@ export default {
   },
   asyncData () {
     console.log('asyncTask')
+
     return axios
       .get(process.env.EXTERNAL_API_URL + '/v1/tasks')
       .then((res) => {
@@ -99,7 +106,21 @@ export default {
       }
     }
   },
+  computed: {
+    loadTasks () {
+      console.log('computed loadTasks')
+      this.$store.commit('setTasks', this.asyncTasks)
+      return this.$store.state.tasks
+    },
+    counter () {
+      console.log('computed ' + this.$store.state.counter)
+      return this.$store.state.counter
+    }
+  },
   methods: {
+    increment () {
+      this.$store.commit('increment')
+    }
   }
 }
 </script>

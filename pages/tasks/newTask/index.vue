@@ -45,6 +45,9 @@
               Home
             </button>
           </nuxt-link>
+          <button @click="decrement">
+            decrementa
+          </button>
         </div>
       </div>
     </div>
@@ -81,6 +84,9 @@ export default {
     this.task.date = new Date()
   },
   methods: {
+    decrement () {
+      this.$store.commit('decrement')
+    },
     onSave () {
       axios
         .post(
@@ -91,7 +97,7 @@ export default {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         })
         .catch(e => console.log(e))
-      this.$router.push('/') //TODO - da inserire gestione STORE      
+      this.$router.push('/') // TODO - da inserire gestione STORE
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
