@@ -32,7 +32,7 @@ export default {
     return tasksListByState(context.route.params.id).then((res) => {
       console.log(res) // TODO - VERIFICARE QUESTA PAGINA
       return {
-        tasksList: res.tasks,
+        tasksList: res,
         statePage: JSONtoOptionState(context.route.params.id)
       }
     })
