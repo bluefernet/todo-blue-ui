@@ -29,7 +29,7 @@ export default {
     FooterBlue
   },
   asyncData (context) {
-    tasksListByState(context.route.params.id).then((res) => {
+    return tasksListByState(context.route.params.id).then((res) => {
       console.log(res) // TODO - VERIFICARE QUESTA PAGINA
       return {
         tasksList: res.tasks,
