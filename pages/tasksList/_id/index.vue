@@ -28,9 +28,11 @@ export default {
     HeaderBlue,
     FooterBlue
   },
-  asyncData (context) {
+  async asyncData (context) {
+    const list = await tasksListByState(context.route.params.id)
+
     return {
-      tasksList: tasksListByState(context.route.params.id),
+      tasksList: list,
       statePage: JSONtoOptionState(context.route.params.id)
     }
 

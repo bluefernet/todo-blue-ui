@@ -47,14 +47,7 @@ export async function tasksListByState (_id) {
   return await getRequest(getTasksByStateURI + _id).tasks
 }
 
-export function getRequest (_route) {
-  let data = {}
-  axios
-    .get(_route)
-    .then((res) => {
-      console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
-      data = res.data
-    })
-    .catch(e => console.log(e))
-  return data
+export async function getRequest (_route) {
+  const response = await axios.get(_route)
+  return response.data
 }
