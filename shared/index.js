@@ -38,3 +38,29 @@ export function optionToJSONState (_state) {
   }
   return _state
 }
+
+export function divideTaskByStatus (_tasks) {
+  const asyncTasksTodo = []
+  const asyncTasksDoing = []
+  const asyncTasksDone = []
+  _tasks.forEach((task) => {
+    switch (task.state) {
+      case 'TODO':
+        asyncTasksTodo.push(task)
+        break
+      case 'DOING':
+        asyncTasksDoing.push(task)
+        break
+      case 'DONE':
+        asyncTasksDone.push(task)
+        break
+      default:
+        break
+    }
+  })
+  return {
+    todo: asyncTasksTodo,
+    doing: asyncTasksDoing,
+    done: asyncTasksDone
+  }
+}

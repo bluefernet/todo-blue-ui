@@ -4,7 +4,7 @@
 
 import axios from 'axios'
 import qs from 'qs'
-import { JSONtoOptionState } from '../shared'
+import { JSONtoOptionState, divideTaskByStatus } from '../shared'
 
 // -----------------------------------------------------------------------------
 // POST - /v1/tasks
@@ -21,7 +21,11 @@ export const getTasksByStateURI = process.env.EXTERNAL_API_URL + '/v1/tasksState
 // -----------------------------------------------------------------------------
 // GET - /v1/task/{:id}
 // -----------------------------------------------------------------------------
-export const getTaskById = process.env.EXTERNAL_API_URL + '/v1/task/'
+export const getTaskByIdURI = process.env.EXTERNAL_API_URL + '/v1/task/'
+// -----------------------------------------------------------------------------
+// GET - /v1/tasks
+// -----------------------------------------------------------------------------
+export const getTasksURI = process.env.EXTERNAL_API_URL + '/v1/tasks'
 
 export function createTask (_task) {
   axios
@@ -48,8 +52,13 @@ export function updateTask (_id, _task) {
     .catch(e => console.log(e))
 }
 
+export async function allTasks () {
+  const data = await getRequest(getTasksURI)
+  return divideTaskByStatus(data.tasks)
+}
+
 export async function taskById (_id) {
-  const data = await getRequest(getTaskById + _id)
+  const data = await getRequest(getTaskByIdURI + _id)
   console.log('api - taskById date pre -' + data.task.date)
   data.task.date = new Date(data.task.date)
   console.log('api - taskById date post -' + data.task.date)

@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import axios from 'axios'
 import HeaderBlue from '../components/shared/HeaderBlue.vue'
 import FooterBlue from '../components/shared/FooterBlue.vue'
 import TaskBoardList from '../components/board/TaskBoardList.vue'
+import { allTasks } from '../api'
 
 export default {
   watchQuery: true,
@@ -57,6 +57,18 @@ export default {
     FooterBlue
   },
   asyncData () {
+    return allTasks()
+      .then((res) => {
+        return {
+          asyncTodoTasks: res.todo,
+          asyncDoingTasks: res.doing,
+          asyncDoneTasks: res.done,
+          // asyncTasks: res.data.tasks,
+          allTask: true // res.data.totalSize > 5 - TODO DA GESTIRE CON LA PAGINAZIONE
+        }
+      })
+      .catch(e => console.log(e))
+    /*
     return axios
       .get(process.env.EXTERNAL_API_URL + '/v1/tasks')
       .then((res) => {
@@ -87,6 +99,7 @@ export default {
         }
       })
       .catch(e => console.log(e))
+*/
   },
   data () {
     return {
@@ -117,8 +130,7 @@ export default {
       }
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
