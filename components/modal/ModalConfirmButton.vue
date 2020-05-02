@@ -21,6 +21,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import ModalForm from '../modal/ModalForm'
+import { optionToJSONState } from '../../shared'
 export default {
   components: {
     ModalForm
@@ -50,20 +51,7 @@ export default {
   },
   methods: {
     updateTask () {
-      switch (this.task.state) {
-        case 'Done':
-          this.task.state = 'DONE'
-          break
-        case 'To do':
-          this.task.state = 'TODO'
-          break
-        case 'Doing':
-          this.task.state = 'DOING'
-          break
-        default:
-          break
-      }
-
+      this.task.state = optionToJSONState(this.task.state)
       axios
         .put(
           process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,
