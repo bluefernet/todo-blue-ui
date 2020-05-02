@@ -29,6 +29,7 @@
 
 <script>
 import TaskBoardItem from '../board/TaskBoardItem'
+import { optionToJSONState } from '../../shared'
 export default {
   components: {
     TaskBoardItem
@@ -59,7 +60,7 @@ export default {
   },
   methods: {
     toTasksList () {
-      this.$router.push('/tasksList/' + this.titleBoard)
+      this.$router.push('/tasksList/' + optionToJSONState(this.titleBoard))
     }
   }
 }

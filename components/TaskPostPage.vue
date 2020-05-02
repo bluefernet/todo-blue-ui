@@ -10,9 +10,9 @@
       <label class="label">Stato</label>
       <div class="select">
         <select v-model="task.state" placeholder="Select a state">
-          <option>To do</option>
-          <option>Doing</option>
-          <option>Done</option>
+          <option>{{ todoOption }}</option>
+          <option>{{ doingOption }}</option>
+          <option>{{ doneOption }}</option>
         </select>
       </div>
       <b-field label="Data scadenza">
@@ -66,6 +66,9 @@ export default {
   },
   data () {
     return {
+      todoOption: 'Inserito',
+      doingOption: 'In elaborazione',
+      doneOption: 'Completato',
       editedtask: this.task
         ? { ...this.task }
         : {

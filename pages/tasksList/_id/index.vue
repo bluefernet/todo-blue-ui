@@ -20,6 +20,8 @@ import axios from 'axios'
 import TaskCardList from '../../../components/card/TaskCardList.vue'
 import HeaderBlue from '../../../components/shared/HeaderBlue.vue'
 import FooterBlue from '../../../components/shared/FooterBlue.vue'
+import { JSONtoOptionState } from '../../../shared'
+
 export default {
   components: {
     TaskCardList,
@@ -37,7 +39,7 @@ export default {
         console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         return {
           tasksList: res.data.tasks,
-          statePage: context.route.params.id
+          statePage: JSONtoOptionState(context.route.params.id)
         }
       })
       .catch(e => console.log(e))

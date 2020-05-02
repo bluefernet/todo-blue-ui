@@ -21,6 +21,8 @@
 import axios from 'axios'
 import qs from 'qs'
 import ModalForm from '../modal/ModalForm.vue'
+import { optionToJSONState } from '../../shared'
+
 export default {
   components: {
     ModalForm
@@ -51,6 +53,7 @@ export default {
   methods: {
     deleteTask () {
       this.task.deleted = true
+      this.task.state = optionToJSONState(this.task.state)
       axios
         .put(
           process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,
