@@ -29,31 +29,14 @@ export default {
     FooterBlue
   },
   asyncData (context) {
-    return tasksListByState(context.route.params.id).then((res) => {
-      console.log(res) // TODO - VERIFICARE QUESTA PAGINA
-      return {
-        tasksList: res,
-        statePage: JSONtoOptionState(context.route.params.id)
-      }
-    })
-      .catch(e => console.log(e))
-
-    /*
-    return axios
-      .get(
-        process.env.EXTERNAL_API_URL +
-          '/v1/tasksState/' +
-          context.route.params.id
-      )
+    return tasksListByState(context.route.params.id)
       .then((res) => {
-        console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
         return {
-          tasksList: res.data.tasks,
+          tasksList: res,
           statePage: JSONtoOptionState(context.route.params.id)
         }
       })
       .catch(e => console.log(e))
-      */
   },
   data () {
     return {

@@ -4,6 +4,7 @@
 
 import axios from 'axios'
 import qs from 'qs'
+import { JSONtoOptionState } from '../shared'
 
 // -----------------------------------------------------------------------------
 // POST - /v1/tasks
@@ -17,6 +18,10 @@ export const updateTaskURI = process.env.EXTERNAL_API_URL + '/v1/task/'
 // GET - /v1/tasksState/{:state}
 // -----------------------------------------------------------------------------
 export const getTasksByStateURI = process.env.EXTERNAL_API_URL + '/v1/tasksState/'
+// -----------------------------------------------------------------------------
+// GET - /v1/task/{:id}
+// -----------------------------------------------------------------------------
+export const getTaskById = process.env.EXTERNAL_API_URL + '/v1/task/'
 
 export function createTask (_task) {
   axios
@@ -41,6 +46,15 @@ export function updateTask (_id, _task) {
       console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
     })
     .catch(e => console.log(e))
+}
+
+export async function taskById (_id) {
+  const data = await getRequest(getTaskById + _id)
+  console.log('api - taskById date pre -' + data.task.date)
+  data.task.date = new Date(data.task.date)
+  console.log('api - taskById date post -' + data.task.date)
+  data.task.state = JSONtoOptionState(data.task.state)
+  return data.task
 }
 
 export async function tasksListByState (_id) {
