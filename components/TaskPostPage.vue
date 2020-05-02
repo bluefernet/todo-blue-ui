@@ -93,7 +93,8 @@ export default {
         .catch(e => console.log(e))
     },
     onCancel () {
-      this.$router.push('/') // TODO - DA GESTIRE CON LO STORE
+      this.$emit('TaskPostPageUpdate')
+      // this.$router.push('/') // TODO - DA GESTIRE CON LO STORE
     }
   }
 }

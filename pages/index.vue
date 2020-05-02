@@ -50,7 +50,7 @@ import FooterBlue from '../components/FooterBlue.vue'
 import TaskBoardList from '../components/TaskBoardList.vue'
 
 export default {
-  watchQuery: [],
+  watchQuery: ['page'],
   components: {
     TaskBoardList,
     HeaderBlue,

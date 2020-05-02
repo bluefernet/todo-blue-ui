@@ -1,5 +1,5 @@
 <template>
-  <task-post-page :task="editedTask" />
+  <task-post-page :task="editedTask" @TaskPostPageUpdate="pageUpdated" />
 </template>
 
 <script>
@@ -42,6 +42,11 @@ export default {
       .catch(e => console.log(e))
   },
   data () {
+  },
+  methods: {
+    pageUpdated () {
+      this.$router.push('/')
+    }
   }
 }
 </script>
