@@ -44,21 +44,17 @@ export function updateTask (_id, _task) {
 }
 
 export function tasksListByState (_id) {
-  const tasks = getRequest(getTasksByStateURI + _id)
-    .then((res) => {
-      console.log(res)
-      return res.tasks
-    })
-    .catch(e => console.log(e))
-  return tasks
+  return getRequest(getTasksByStateURI + _id).tasks
 }
 
 export function getRequest (_route) {
-  return axios
+  let data = {}
+  axios
     .get(_route)
     .then((res) => {
       console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
-      return res.data
+      data = res.data
     })
     .catch(e => console.log(e))
+  return data
 }

@@ -33,8 +33,9 @@ export default {
       tasksList: tasksListByState(context.route.params.id),
       statePage: JSONtoOptionState(context.route.params.id)
     }
+
     /*
-   return axios
+    return axios
       .get(
         process.env.EXTERNAL_API_URL +
           '/v1/tasksState/' +
@@ -48,7 +49,7 @@ export default {
         }
       })
       .catch(e => console.log(e))
-*/
+      */
   },
   data () {
     return {
