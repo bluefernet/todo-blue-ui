@@ -93,9 +93,9 @@ export default {
       todoStyleBoard: 'is-link',
       doingStyleBoard: 'is-warning',
       doneStyleBoard: 'is-success',
-      todoBoard: 'TODO',
-      doingBoard: 'DOING',
-      doneBoard: 'DONE',
+      todoBoard: 'Inseriti',
+      doingBoard: 'In elaborazione',
+      doneBoard: 'Completati',
       taskArray: [
         {
           title: 'titolo 1',

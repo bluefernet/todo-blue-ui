@@ -42,9 +42,6 @@ export default {
     }
   },
   methods: {
-    showNotification () {
-      this.deleteNotification = !this.deleteNotification
-    },
     details () {
       this.$router.push({ path: '/tasks/' + this.id })
     }

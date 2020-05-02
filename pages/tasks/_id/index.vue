@@ -1,7 +1,6 @@
 <template>
   <div>
     <task-post-page :task="editedTask" @TaskPostPageUpdate="pageUpdated" />
-
     <div>
       <b-modal
         :active.sync="isConfirmModalActive"
@@ -21,6 +20,7 @@
 import axios from 'axios'
 import TaskPostPage from '../../../components/TaskPostPage.vue'
 import ModalConfirmForm from '../../../components/modal/ModalConfirmForm.vue'
+import { JSONtoOptionState } from '../../../shared'
 
 export default {
   components: {
@@ -32,19 +32,7 @@ export default {
       .get(process.env.EXTERNAL_API_URL + '/v1/task/' + context.route.params.id)
       .then((res) => {
         res.data.task.date = new Date(res.data.task.date)
-        switch (res.data.task.state) {
-          case 'DONE':
-            res.data.task.state = 'Done'
-            break
-          case 'TODO':
-            res.data.task.state = 'To do'
-            break
-          case 'DOING':
-            res.data.task.state = 'Doing'
-            break
-          default:
-            break
-        }
+        res.data.task.state = JSONtoOptionState(res.data.task.state)
         return {
           editedTask: res.data.task
         }

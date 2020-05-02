@@ -15,7 +15,7 @@
           <option>Done</option>
         </select>
       </div>
-      <b-field label="Select a date">
+      <b-field label="Data scadenza">
         <b-datepicker
           v-model="task.date"
           :selected-date="task.date"
@@ -46,8 +46,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
 import HeaderBlue from '../components/shared/HeaderBlue.vue'
 import FooterBlue from '../components/shared/FooterBlue.vue'
 import ModalConfirmButton from '../components/modal/ModalConfirmButton.vue'
@@ -79,20 +77,8 @@ export default {
     }
   },
   methods: {
-    onSave () {
-      axios
-        .post(
-          process.env.EXTERNAL_API_URL + '/v1/tasks',
-          qs.stringify(this.task)
-        )
-        .then((res) => {
-          console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
-        })
-        .catch(e => console.log(e))
-    },
     onCancel () {
       this.$emit('TaskPostPageUpdate')
-      // this.$router.push('/') // TODO - DA GESTIRE CON LO STORE
     }
   }
 }

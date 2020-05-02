@@ -12,17 +12,17 @@
       <div class="select">
         <select v-model="task.state">
           <option value="TODO">
-            To do
+            {{ todoOption }}
           </option>
           <option value="DOING">
-            Doing
+            {{ doingOption }}
           </option>
           <option value="DONE">
-            Done
+            {{ doneOption }}
           </option>
         </select>
       </div>
-      <b-field label="Select a date">
+      <b-field label="Data scadenza">
         <b-datepicker v-model="task.date" :selected-date="task.date" placeholder="Select a date..." icon="calendar-today" editable />
       </b-field>
     </div>
@@ -30,9 +30,12 @@
       <div class="level">
         <div class="level-left">
           <div class="buttons">
-            <button class="button is-danger" @click="onCancel">
-              Annulla
-            </button>
+            <nuxt-link to="/">
+              <button class="button is-danger">
+                Annulla
+              </button>
+            </nuxt-link>
+
             <button class="button is-success" @click="onSave">
               Salva
             </button>
@@ -48,6 +51,18 @@
         </div>
       </div>
     </div>
+    <div>
+      <b-modal
+        :active.sync="isConfirmModalActive"
+        has-modal-card
+        trap-focus
+        :destroy-on-hide="false"
+        aria-role="dialog"
+        aria-modal
+      >
+        <modal-confirm-form />
+      </b-modal>
+    </div>
     <footer-blue />
   </div>
 </template>
@@ -57,9 +72,11 @@ import axios from 'axios'
 import qs from 'qs'
 import HeaderBlue from '../../../components/shared/HeaderBlue.vue'
 import FooterBlue from '../../../components/shared/FooterBlue.vue'
+import ModalConfirmForm from '../../../components/modal/ModalConfirmForm'
 
 export default {
   components: {
+    ModalConfirmForm,
     HeaderBlue,
     FooterBlue
   },
@@ -68,6 +85,10 @@ export default {
   },
   data () {
     return {
+      todoOption: 'Inserito',
+      doingOption: 'In elaborazione',
+      doneOption: 'Completato',
+      isConfirmModalActive: false,
       titolo: '',
       task: {
         title: '',
@@ -89,9 +110,9 @@ export default {
         )
         .then((res) => {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
+          this.isConfirmModalActive = true
         })
         .catch(e => console.log(e))
-      this.$router.push('/') // TODO - da inserire gestione STORE
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA

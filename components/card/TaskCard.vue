@@ -1,21 +1,21 @@
 <template>
   <div>
     <div class="card" @click="visualizza">
-      <a>      <header class="card-header">
-        <div class="card-header-title">
-          <p>{{ title }} - {{ date }}</p>
-        </div>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true" />
-          </span>
-        </a>
-      </header></a>
-
+      <a>
+        <header class="card-header">
+          <div class="card-header-title">
+            <p>{{ title }} - {{ date }}</p>
+          </div>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true" />
+            </span>
+          </a>
+        </header>
+      </a>
       <div class="card-content">
         <div class="content">
           {{ description }}
-          <time datetime="2016-1-1" />
         </div>
       </div>
       <footer class="card-footer" />

@@ -12,7 +12,7 @@
       aria-role="dialog"
       aria-modal
     >
-      <modal-form v-bind="formProps" @modalForm="modalButton" />
+      <modal-form v-bind="formProps" @modalForm="deleteTask" />
     </b-modal>
   </div>
 </template>
@@ -49,9 +49,8 @@ export default {
     }
   },
   methods: {
-    modalButton () {
+    deleteTask () {
       this.task.deleted = true
-
       axios
         .put(
           process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,

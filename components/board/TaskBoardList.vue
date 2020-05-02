@@ -16,7 +16,6 @@
                 :description="task.description"
                 :date="task.date"
               />
-
               <button v-if="visualizzaTutti" class="button is-fullwidth" @click="toTasksList">
                 Vedi tutti
               </button>
