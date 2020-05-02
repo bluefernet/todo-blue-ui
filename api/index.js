@@ -12,7 +12,11 @@ export const createTaskURI = process.env.EXTERNAL_API_URL + '/v1/tasks'
 // -----------------------------------------------------------------------------
 // PUT - /v1/task/{:id}
 // -----------------------------------------------------------------------------
-export const updateTaskUri = process.env.EXTERNAL_API_URL + '/v1/task/'
+export const updateTaskURI = process.env.EXTERNAL_API_URL + '/v1/task/'
+// -----------------------------------------------------------------------------
+// GET - /v1/tasksState/{:state}
+// -----------------------------------------------------------------------------
+export const getTasksByStateURI = process.env.EXTERNAL_API_URL + '/v1/tasksState/'
 
 export function createTask (_task) {
   axios
@@ -30,11 +34,27 @@ export function createTask (_task) {
 export function updateTask (_id, _task) {
   axios
     .put(
-      updateTaskUri + _id,
+      updateTaskURI + _id,
       qs.stringify(_task)
     )
     .then((res) => {
       console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
+    })
+    .catch(e => console.log(e))
+}
+
+export function tasksListByState (_id) {
+  getRequest(getTasksByStateURI + _id)
+    .then((res) => { return res.data.tasks })
+    .catch(e => console.log(e))
+}
+
+export function getRequest (_route) {
+  return axios
+    .get(_route)
+    .then((res) => {
+      console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
+      return res.data
     })
     .catch(e => console.log(e))
 }

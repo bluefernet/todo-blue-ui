@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import axios from 'axios'
 import TaskCardList from '../../../components/card/TaskCardList.vue'
 import HeaderBlue from '../../../components/shared/HeaderBlue.vue'
 import FooterBlue from '../../../components/shared/FooterBlue.vue'
 import { JSONtoOptionState } from '../../../shared'
+import { tasksListByState } from '../../../api'
 
 export default {
   components: {
@@ -29,7 +29,12 @@ export default {
     FooterBlue
   },
   asyncData (context) {
-    return axios
+    return {
+      tasksList: tasksListByState(context.route.params.id),
+      statePage: JSONtoOptionState(context.route.params.id)
+    }
+    /*
+   return axios
       .get(
         process.env.EXTERNAL_API_URL +
           '/v1/tasksState/' +
@@ -43,6 +48,7 @@ export default {
         }
       })
       .catch(e => console.log(e))
+*/
   },
   data () {
     return {
