@@ -68,11 +68,10 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
 import HeaderBlue from '../../../components/shared/HeaderBlue.vue'
 import FooterBlue from '../../../components/shared/FooterBlue.vue'
 import ModalConfirmForm from '../../../components/modal/ModalConfirmForm'
+import { createTask } from '../../../api'
 
 export default {
   components: {
@@ -103,6 +102,7 @@ export default {
   },
   methods: {
     onSave () {
+      /*
       axios
         .post(
           process.env.EXTERNAL_API_URL + '/v1/tasks',
@@ -110,9 +110,11 @@ export default {
         )
         .then((res) => {
           console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
-          this.isConfirmModalActive = true
         })
         .catch(e => console.log(e))
+*/
+      createTask(this.task)
+      this.isConfirmModalActive = true
     },
     onCancel () {
       this.$router.push('/') // TODO - VERIFICARE QUESTA PAGINA
