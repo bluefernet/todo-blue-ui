@@ -7,9 +7,7 @@
         </p>
       </header>
       <section class="modal-card-body">
-        <p>
-          {{ message }}
-        </p>
+        <p>{{ message }}</p>
       </section>
       <footer class="modal-card-foot">
         <div class="field is-grouped">

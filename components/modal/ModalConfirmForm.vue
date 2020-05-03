@@ -7,9 +7,7 @@
         </p>
       </header>
       <section class="modal-card-body">
-        <p>
-          Torna alla home page
-        </p>
+        <p>Torna alla home page</p>
       </section>
       <footer class="modal-card-foot">
         <nuxt-link to="/">

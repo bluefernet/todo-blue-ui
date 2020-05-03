@@ -1,5 +1,11 @@
 <template>
-  <div />
+  <div>
+    <nuxt-link to="/">
+      <button class="button is-info">
+        Home
+      </button>
+    </nuxt-link>
+  </div>
 </template>
 
 <script>

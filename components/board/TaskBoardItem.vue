@@ -36,10 +36,7 @@ export default {
     }
   },
   date () {
-    return {
-      isActive: false,
-      deleteNotification: false
-    }
+    return {}
   },
   mounted () {
     this.date = new Date(this.date).toDateString()

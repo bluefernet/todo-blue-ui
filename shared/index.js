@@ -4,7 +4,7 @@ export const doingOption = 'In elaborazione'
 export const doneJSON = 'DONE'
 export const todoJSON = 'TODO'
 export const doingJSON = 'DOING'
-export const boardItemNumber = 5
+export const boardItemNumber = 5 // Numero di record da visualizzare per Board
 
 export function JSONtoOptionState (_state) {
   switch (_state) {

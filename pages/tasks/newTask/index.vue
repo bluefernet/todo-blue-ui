@@ -93,7 +93,6 @@ export default {
       doingOption: 'In elaborazione',
       doneOption: 'Completato',
       isConfirmModalActive: false,
-      titolo: '',
       task: {
         title: '',
         description: '',

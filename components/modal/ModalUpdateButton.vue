@@ -54,19 +54,7 @@ export default {
     updateTask () {
       this.task.state = optionToJSONState(this.task.state)
       updateTask(this.task.id, this.task)
-      /*
-  axios
-        .put(
-          process.env.EXTERNAL_API_URL + '/v1/task/' + this.task.id,
-          qs.stringify(this.task)
-        )
-        .then((res) => {
-          console.log(res.data) // TODO - VERIFICARE QUESTA PAGINA
-        })
-        .catch(e => console.log(e))
-*/
-
-      this.$emit('updateConfirmed') // TODO - DA GESTIRE CON LO STORE
+      this.$emit('updateConfirmed')
     }
   }
 }
