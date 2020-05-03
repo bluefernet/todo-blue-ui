@@ -39,20 +39,26 @@ export function optionToJSONState (_state) {
   return _state
 }
 
-export function divideTaskByStatus (_tasks) {
+export function divideTaskByStatus (_tasks, _pageSize) {
   const asyncTasksTodo = []
   const asyncTasksDoing = []
   const asyncTasksDone = []
   _tasks.forEach((task) => {
     switch (task.state) {
       case 'TODO':
-        asyncTasksTodo.push(task)
+        if (asyncTasksTodo.length < _pageSize) {
+          asyncTasksTodo.push(task)
+        }
         break
       case 'DOING':
-        asyncTasksDoing.push(task)
+        if (asyncTasksDoing.length < _pageSize) {
+          asyncTasksDoing.push(task)
+        }
         break
       case 'DONE':
-        asyncTasksDone.push(task)
+        if (asyncTasksDone.length < _pageSize) {
+          asyncTasksDone.push(task)
+        }
         break
       default:
         break

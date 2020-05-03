@@ -47,7 +47,7 @@
 import HeaderBlue from '../components/shared/HeaderBlue.vue'
 import FooterBlue from '../components/shared/FooterBlue.vue'
 import TaskBoardList from '../components/board/TaskBoardList.vue'
-import { tasksListByState } from '../api'
+import { allTasks } from '../api'
 
 export default {
   watchQuery: true,
@@ -57,45 +57,20 @@ export default {
     FooterBlue
   },
   asyncData () {
-    /*
-    return allTasks()
-      .then(res => {
+    return allTasks(3) // _pageSize --> Elements for Board
+      .then((res) => {
         return {
           asyncTodoTasks: res.todo,
           asyncDoingTasks: res.doing,
           asyncDoneTasks: res.done,
+          allTodoTask: !(res.todo.length < 3),
+          allDoingTask: !(res.doing.length < 3),
+          allDoneTask: !(res.done.length < 3),
           // asyncTasks: res.data.tasks,
           allTask: true // res.data.totalSize > 5 - TODO DA GESTIRE CON LA PAGINAZIONE
-        };
+        }
       })
-      .catch(e => console.log(e));
-*/
-    return (
-      tasksListByState('TODO')
-        .then((res) => {
-          return {
-            asyncTodoTasks: res.tasks,
-            allTodoTask: res.totalSize > 3
-          }
-        })
-        .catch(e => console.log(e)),
-      tasksListByState('DOING')
-        .then((res) => {
-          return {
-            asyncDoingTasks: res.tasks,
-            allDoingTask: res.totalSize > 3
-          }
-        })
-        .catch(e => console.log(e)),
-      tasksListByState('DONE')
-        .then((res) => {
-          return {
-            asyncDoneTasks: res.tasks,
-            allDoneTask: res.totalSize > 3
-          }
-        })
-        .catch(e => console.log(e))
-    )
+      .catch(e => console.log(e))
 
     /*
     return axios

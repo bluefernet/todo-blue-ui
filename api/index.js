@@ -62,9 +62,9 @@ export function updateTask (_id, _task) {
     .catch(e => console.log(e))
 }
 
-export async function allTasks () {
+export async function allTasks (_pageSize) {
   const data = await getRequest(getTasksURI)
-  return divideTaskByStatus(data.tasks)
+  return divideTaskByStatus(data.tasks, _pageSize)
 }
 
 export async function taskById (_id) {
