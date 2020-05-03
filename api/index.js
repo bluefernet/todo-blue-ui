@@ -69,9 +69,9 @@ export async function allTasks () {
 
 export async function taskById (_id) {
   const data = await getRequest(getTaskByIdURI + _id)
-  console.log('api - taskById date pre -' + data.task.date)
-  data.task.date = new Date(data.task.date)
-  console.log('api - taskById date post -' + data.task.date)
+  //console.log('api - taskById date pre -' + data.task.date)
+  //data.task.date = new Date(data.task.date)
+  //console.log('api - taskById date post -' + data.task.date)
   data.task.state = JSONtoOptionState(data.task.state)
   return data.task
 }
