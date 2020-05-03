@@ -62,6 +62,7 @@
         :active.sync="isConfirmModalActive"
         has-modal-card
         trap-focus
+        :can-cancel="x"
         :destroy-on-hide="false"
         aria-role="dialog"
         aria-modal

@@ -13,7 +13,7 @@
       </section>
       <footer class="modal-card-foot">
         <nuxt-link to="/">
-          <button class="button is-info" type="button">
+          <button class="button is-info" type="button" @click="goToHome">
             Home
           </button>
         </nuxt-link>
@@ -37,7 +37,7 @@ export default {
     }
   },
   methods: {
-    goToTasks () {
+    goToHome () {
       this.$parent.close()
       this.$emit('modalForm')
     }
