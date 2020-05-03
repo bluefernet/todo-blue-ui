@@ -28,6 +28,7 @@ export const getTaskByIdURI = process.env.EXTERNAL_API_URL + '/v1/task/'
 export const getTasksURI = process.env.EXTERNAL_API_URL + '/v1/tasks'
 
 export function createTask (_task) {
+  console.log('api - createTask - date ' + _task.date)
   axios
     .post(
       createTaskURI,
@@ -41,6 +42,7 @@ export function createTask (_task) {
 
 // ModalConfirmButton
 export function updateTask (_id, _task) {
+  console.log('api - updateTask - date ' + _task.date)
   axios
     .put(
       updateTaskURI + _id,

@@ -12,12 +12,14 @@
         </p>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-danger" type="button" @click="$parent.close()">
-          Annulla
-        </button>
-        <button class="button is-primary" @click="goToTasks">
-          Conferma
-        </button>
+        <div class="buttons">
+          <button class="button is-danger" type="button" @click="$parent.close()">
+            Annulla
+          </button>
+          <button class="button is-primary" @click="goToTasks">
+            Conferma
+          </button>
+        </div>
       </footer>
     </div>
   </div>

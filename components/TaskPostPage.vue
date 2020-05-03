@@ -29,8 +29,10 @@
     <div class="section">
       <div class="level">
         <div class="level-left">
-          <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
-          <modal-update-button :task="task" @updateConfirmed="onCancel" />
+          <div class="buttons">
+            <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
+            <modal-update-button :task="task" @updateConfirmed="onCancel" />
+          </div>
         </div>
         <div class="level-right">
           <nuxt-link to="/">
