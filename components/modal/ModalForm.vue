@@ -11,7 +11,7 @@
       </section>
       <footer class="modal-card-foot">
         <div class="field is-grouped">
-          <button class="button is-danger" type="button">
+          <button class="button is-danger" type="button" @click="goBack">
             Annulla
           </button>
           <button class="button is-primary" @click="goToTasks">
@@ -41,6 +41,9 @@ export default {
     goToTasks () {
       this.$parent.close()
       this.$emit('modalForm')
+    },
+    goBack () {
+      this.$parent.close()
     }
   }
 }
