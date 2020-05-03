@@ -32,7 +32,7 @@ export default {
     return tasksListByState(context.route.params.id)
       .then((res) => {
         return {
-          tasksList: res,
+          tasksList: res.tasks,
           statePage: JSONtoOptionState(context.route.params.id)
         }
       })

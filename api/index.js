@@ -76,7 +76,7 @@ export async function taskById (_id) {
 
 export async function tasksListByState (_id) {
   const data = await getRequest(getTasksByStateURI + _id)
-  return data.tasks
+  return data
 }
 
 export async function getRequest (_route) {

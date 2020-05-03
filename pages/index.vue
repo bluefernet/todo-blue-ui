@@ -8,7 +8,7 @@
             :tasks="asyncTodoTasks"
             :title-board="todoBoard"
             :color-class="todoStyleBoard"
-            :visualizza-tutti="allTask"
+            :visualizza-tutti="allTodoTask"
           />
         </div>
 
@@ -17,7 +17,7 @@
             :tasks="asyncDoingTasks"
             :title-board="doingBoard"
             :color-class="doingStyleBoard"
-            :visualizza-tutti="allTask"
+            :visualizza-tutti="allDoingTask"
           />
         </div>
 
@@ -26,7 +26,7 @@
             :tasks="asyncDoneTasks"
             :title-board="doneBoard"
             :color-class="doneStyleBoard"
-            :visualizza-tutti="allTask"
+            :visualizza-tutti="allDoneTask"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@
 import HeaderBlue from '../components/shared/HeaderBlue.vue'
 import FooterBlue from '../components/shared/FooterBlue.vue'
 import TaskBoardList from '../components/board/TaskBoardList.vue'
-import { allTasks } from '../api'
+import { tasksListByState } from '../api'
 
 export default {
   watchQuery: true,
@@ -57,17 +57,46 @@ export default {
     FooterBlue
   },
   asyncData () {
+    /*
     return allTasks()
-      .then((res) => {
+      .then(res => {
         return {
           asyncTodoTasks: res.todo,
           asyncDoingTasks: res.doing,
           asyncDoneTasks: res.done,
           // asyncTasks: res.data.tasks,
           allTask: true // res.data.totalSize > 5 - TODO DA GESTIRE CON LA PAGINAZIONE
-        }
+        };
       })
-      .catch(e => console.log(e))
+      .catch(e => console.log(e));
+*/
+    return (
+      tasksListByState('TODO')
+        .then((res) => {
+          return {
+            asyncTodoTasks: res.tasks,
+            allTodoTask: res.totalSize > 3
+          }
+        })
+        .catch(e => console.log(e)),
+      tasksListByState('DOING')
+        .then((res) => {
+          return {
+            asyncDoingTasks: res.tasks,
+            allDoingTask: res.totalSize > 3
+          }
+        })
+        .catch(e => console.log(e)),
+      tasksListByState('DONE')
+        .then((res) => {
+          return {
+            asyncDoneTasks: res.tasks,
+            allDoneTask: res.totalSize > 3
+          }
+        })
+        .catch(e => console.log(e))
+    )
+
     /*
     return axios
       .get(process.env.EXTERNAL_API_URL + '/v1/tasks')
