@@ -29,7 +29,7 @@
     <div class="section">
       <div class="level">
         <div class="level-left">
-          <div class="buttons">
+          <div class="field is-grouped">
             <modal-delete-button :task="task" @deleteConfirmed="onCancel" />
             <modal-update-button :task="task" @updateConfirmed="onCancel" />
           </div>

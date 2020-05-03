@@ -35,7 +35,7 @@
     <div class="section">
       <div class="level">
         <div class="level-left">
-          <div class="buttons">
+          <div class="field is-grouped">
             <nuxt-link to="/">
               <button class="button is-danger">
                 Annulla

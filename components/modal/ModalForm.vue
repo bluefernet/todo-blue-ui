@@ -12,7 +12,7 @@
         </p>
       </section>
       <footer class="modal-card-foot">
-        <div class="buttons">
+        <div class="field is-grouped">
           <button class="button is-danger" type="button" @click="$parent.close()">
             Annulla
           </button>
