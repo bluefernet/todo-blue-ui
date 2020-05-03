@@ -81,6 +81,7 @@ export async function tasksListByState (_id) {
 
 export async function getRequest (_route) {
   const response = await axios.get(_route)
+  console.log('getRequest ' + response)
   if (response.data.error) {
     console.log('api Error!!!!!')
   }
