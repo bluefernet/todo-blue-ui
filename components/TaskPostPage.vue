@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div>
     <header-blue />
     <br>
     <div class="section">
