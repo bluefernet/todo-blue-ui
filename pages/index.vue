@@ -48,6 +48,7 @@ import HeaderBlue from '../components/shared/HeaderBlue.vue'
 import FooterBlue from '../components/shared/FooterBlue.vue'
 import TaskBoardList from '../components/board/TaskBoardList.vue'
 import { allTasks } from '../api'
+import { boardItemNumber } from '../shared';
 
 export default {
   watchQuery: true,
@@ -57,17 +58,15 @@ export default {
     FooterBlue
   },
   asyncData () {
-    return allTasks(3) // _pageSize --> Elements for Board
+    return allTasks(boardItemNumber) // _pageSize --> Elements for Board
       .then((res) => {
         return {
           asyncTodoTasks: res.todo,
           asyncDoingTasks: res.doing,
           asyncDoneTasks: res.done,
-          allTodoTask: !(res.todo.length < 3),
-          allDoingTask: !(res.doing.length < 3),
-          allDoneTask: !(res.done.length < 3),
-          // asyncTasks: res.data.tasks,
-          allTask: true // res.data.totalSize > 5 - TODO DA GESTIRE CON LA PAGINAZIONE
+          allTodoTask: !(res.todo.length < boardItemNumber),
+          allDoingTask: !(res.doing.length < boardItemNumber),
+          allDoneTask: !(res.done.length < boardItemNumber),
         }
       })
       .catch(e => console.log(e))
