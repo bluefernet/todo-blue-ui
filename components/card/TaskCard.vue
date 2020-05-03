@@ -49,6 +49,9 @@ export default {
       default: ''
     }
   },
+  mounted () {
+    this.date = new Date(this.date).toDateString()
+  },
   methods: {
     visualizza () {
       this.$router.push({ path: '/tasks/' + this.id })

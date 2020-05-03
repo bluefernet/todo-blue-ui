@@ -41,6 +41,9 @@ export default {
       deleteNotification: false
     }
   },
+  mounted () {
+    this.date = new Date(this.date).toDateString()
+  },
   methods: {
     details () {
       this.$router.push({ path: '/tasks/' + this.id })

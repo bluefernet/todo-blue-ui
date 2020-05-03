@@ -29,6 +29,14 @@ export const getTasksURI = process.env.EXTERNAL_API_URL + '/v1/tasks'
 
 export function createTask (_task) {
   console.log('api - createTask - date ' + _task.date)
+  console.log('api - createTask - date ' + _task.date.toDateString())
+  console.log('new Date().getTime() ' + new Date().getTime())
+  console.log('new Date().getUTCDate() ' + new Date().getUTCDate())
+  console.log('new Date().toDateString() ' + new Date().toDateString())
+  console.log('new Date().toISOString() ' + new Date().toISOString())
+  console.log('new Date().toJSON() ' + new Date().toJSON())
+  console.log('new Date().toUTCString() ' + new Date().toUTCString())
+  console.log('new Date().toString() ' + new Date().toString())
   axios
     .post(
       createTaskURI,
